@@ -49,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
             sliver: SliverToBoxAdapter(
               child: ExploreCards(
+                title: 'Explore',
                 exploreCards: exploreCards,
               ),
             ),

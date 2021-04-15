@@ -1,3 +1,4 @@
 export 'explore_cards.dart';
 export 'profile_avatar.dart';
 export 'post_container.dart';
+export 'custom_tab_bar.dart';

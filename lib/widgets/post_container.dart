@@ -37,7 +37,7 @@ class PostContainer extends StatelessWidget {
         ),
         Positioned(
           bottom: 16.0,
-          left: 8.0,
+          left: 7.0,
           right: 8.0,
           child: Text(
             post.title,

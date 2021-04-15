@@ -7,10 +7,12 @@ import 'package:flutter_archfolio/widgets/widgets.dart';
 
 class ExploreCards extends StatelessWidget {
   final List<ExploreCard> exploreCards;
+  final String title;
 
   const ExploreCards({
     Key key,
     @required this.exploreCards,
+    @required this.title,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class ExploreCards extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 0.0),
               child: Text(
-                'Explore',
+                title,
                 style: const TextStyle(
                   color: Palette.barTheme,
                   fontSize: 20.0,
