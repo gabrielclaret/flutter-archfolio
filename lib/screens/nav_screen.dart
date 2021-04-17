@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 
+import 'package:flutter_archfolio/config/palette.dart';
+
 import 'screens.dart';
 
 class NavScreen extends StatefulWidget {
@@ -13,7 +15,7 @@ class _NavScreenState extends State<NavScreen> {
     HomeScreen(),
     ExploreScreen(),
     Scaffold(),
-    Scaffold(),
+    NotificationsScreen(),
     Scaffold(),
     Scaffold(),
   ];
@@ -37,7 +39,7 @@ class _NavScreenState extends State<NavScreen> {
           children: _screens,
         ),
         bottomNavigationBar: Container(
-          color: Colors.white,
+          color: Palette.cardTheme,
           child: CustomTabBar(
             icons: _icons,
             selectedIndex: _selectedIndex,

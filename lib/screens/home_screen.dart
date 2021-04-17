@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text(
               'archfolio',
               style: const TextStyle(
-                color: Palette.barTheme,
+                color: Palette.iconTheme,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.9,
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: IconButton(
                   icon: Icon(Icons.bookmark_outline_sharp),
                   iconSize: 30.0,
-                  color: Palette.barTheme,
+                  color: Palette.iconTheme,
                   onPressed: () => print(
                     "Bookmarks",
                   ),
@@ -63,13 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          'other tools... or smthing',
+                          '',
                           style: const TextStyle(
-                            color: Palette.barTheme,
+                            color: Palette.iconTheme,
                             fontSize: 15.0,
-                            fontWeight: FontWeight.normal,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.dehaze),
                       iconSize: 25.0,
-                      color: Palette.barTheme,
+                      color: Palette.iconTheme,
                       onPressed: () {
                         setState(() {
                           _isTimeline = true;
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.grid_view),
                       iconSize: 25.0,
-                      color: Palette.barTheme,
+                      color: Palette.iconTheme,
                       onPressed: () {
                         setState(() {
                           _isTimeline = false;
@@ -104,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
               maxCrossAxisExtent: _isTimeline ? 500 : 300,
               mainAxisSpacing: 10.0,
               crossAxisSpacing: 10.0,
+              childAspectRatio: _isTimeline ? 1.1 : 0.95,
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {

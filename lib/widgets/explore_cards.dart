@@ -28,9 +28,10 @@ class ExploreCards extends StatelessWidget {
               child: Text(
                 title,
                 style: const TextStyle(
-                  color: Palette.barTheme,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.normal,
+                  color: Palette.iconTheme,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: -0.5 ,
                 ),
               ),
             ),

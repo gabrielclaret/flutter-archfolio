@@ -173,15 +173,18 @@ final List<Post> posts = [
     user: currentUser,
     title: 'Cool Project 1',
     description: 'Check out these cool puppers',
-    imageUrl: 'https://images.unsplash.com/photo-1610114190332-14d22f956ddd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=335&q=80',
+    imageUrl:
+        'https://images.unsplash.com/photo-1610114190332-14d22f956ddd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=335&q=80',
     likes: 800,
     views: 1202,
   ),
   Post(
     user: users[5],
     title: 'Cool Project 2',
-    description: 'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    imageUrl: 'https://images.unsplash.com/photo-1525286335722-c30c6b5df541?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=334&q=80',
+    description:
+        'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    imageUrl:
+        'https://images.unsplash.com/photo-1525286335722-c30c6b5df541?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=334&q=80',
     likes: 821,
     views: 2214,
   ),
@@ -206,8 +209,10 @@ final List<Post> posts = [
   Post(
     user: users[0],
     title: 'Cool Project 5',
-    description: 'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    imageUrl: 'https://images.unsplash.com/photo-1458310336304-9b584acc9b58?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=267&q=80',
+    description:
+        'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    imageUrl:
+        'https://images.unsplash.com/photo-1458310336304-9b584acc9b58?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=267&q=80',
     likes: 251,
     views: 625,
   ),
@@ -241,8 +246,10 @@ final List<Post> posts = [
   Post(
     user: users[0],
     title: 'Cool Project 9',
-    description: 'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    imageUrl: 'https://images.unsplash.com/photo-1461695008884-244cb4543d74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80',
+    description:
+        'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    imageUrl:
+        'https://images.unsplash.com/photo-1461695008884-244cb4543d74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80',
     likes: 320,
     views: 705,
   ),
@@ -254,5 +261,31 @@ final List<Post> posts = [
         'https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80',
     likes: 1523,
     views: 3001,
+  )
+];
+final List<UserNotification> notifications = [
+  UserNotification(
+    user: users[1],
+    interaction: 'like',
+    post: posts[1],
+    isViewed: false,
+  ),
+  UserNotification(
+    user: users[2],
+    interaction: 'comment',
+    post: posts[2],
+    isViewed: true,
+  ),
+  UserNotification(
+    user: users[4],
+    interaction: 'comment',
+    post: posts[3],
+    isViewed: true,
+  ),
+  UserNotification(
+    user: users[2],
+    interaction: 'follow',
+    post: null,
+    isViewed: false,
   )
 ];
