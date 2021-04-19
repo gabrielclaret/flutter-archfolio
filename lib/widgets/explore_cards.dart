@@ -31,7 +31,7 @@ class ExploreCards extends StatelessWidget {
                   color: Palette.iconTheme,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
-                  letterSpacing: -0.5 ,
+                  letterSpacing: -0.8,
                 ),
               ),
             ),

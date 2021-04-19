@@ -65,11 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          '',
+                          'Posts',
                           style: const TextStyle(
                             color: Palette.iconTheme,
-                            fontSize: 15.0,
+                            fontSize: 18.0,
                             fontWeight: FontWeight.bold,
+                            letterSpacing: -0.8,
                           ),
                         ),
                       ),

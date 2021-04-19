@@ -16,8 +16,7 @@ class _NavScreenState extends State<NavScreen> {
     ExploreScreen(),
     Scaffold(),
     NotificationsScreen(),
-    Scaffold(),
-    Scaffold(),
+    ProfileScreen(),
   ];
   final List<IconData> _icons = const [
     Icons.home_outlined,

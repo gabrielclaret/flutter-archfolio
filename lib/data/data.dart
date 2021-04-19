@@ -1,10 +1,17 @@
 import 'package:flutter_archfolio/model/models.dart';
 
 final User currentUser = User(
-  name: 'Gabriel Claret',
-  imageUrl:
-      'https://images.unsplash.com/photo-1578133671540-edad0b3d689e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80',
-);
+    name: 'Jane Doe',
+    imageUrl:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
+    posts: [
+      posts[1],
+      posts[3],
+      posts[5],
+    ]);
 
 final List<User> users = [
   User(
@@ -170,7 +177,7 @@ final List<ExploreCard> exploreCards = [
 
 final List<Post> posts = [
   Post(
-    user: currentUser,
+    user: users[2],
     title: 'Cool Project 1',
     description: 'Check out these cool puppers',
     imageUrl:
@@ -179,7 +186,7 @@ final List<Post> posts = [
     views: 1202,
   ),
   Post(
-    user: users[5],
+    user: users[1],
     title: 'Cool Project 2',
     description:
         'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -198,7 +205,7 @@ final List<Post> posts = [
     views: 551,
   ),
   Post(
-    user: users[3],
+    user: users[1],
     title: 'Cool Project 4',
     description: 'Adventure 🏔',
     imageUrl:
@@ -217,7 +224,7 @@ final List<Post> posts = [
     views: 625,
   ),
   Post(
-    user: users[9],
+    user: users[1],
     title: 'Cool Project 6',
     description: 'A classic.',
     imageUrl:
