@@ -13,104 +13,168 @@ final User currentUser = User(
       posts[5],
     ]);
 
+final List<User> recentUsers = [users[1], users[3], users[6]];
+
 final List<User> users = [
   User(
     name: 'David Brooks',
     imageUrl:
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'Jane Doe',
     imageUrl:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'Matthew Hinkle',
     imageUrl:
         'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'Amy Smith',
     imageUrl:
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'Ed Morris',
     imageUrl:
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'Carolyn Duncan',
     imageUrl:
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'Paul Pinnock',
     imageUrl:
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-      name: 'Elizabeth Wong',
-      imageUrl:
-          'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80'),
+    name: 'Elizabeth Wong',
+    imageUrl:
+        'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
+  ),
   User(
     name: 'James Lathrop',
     imageUrl:
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'Jessie Samson',
     imageUrl:
         'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
     name: 'David Brooks',
     imageUrl:
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-    name: 'Jane Doe',
+    name: 'Lee Yun',
     imageUrl:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-    name: 'Matthew Hinkle',
+    name: 'Carolyn Brooks',
     imageUrl:
         'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-    name: 'Amy Smith',
+    name: 'Jean Paul',
     imageUrl:
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-    name: 'Ed Morris',
+    name: 'Lang Buddha',
     imageUrl:
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-    name: 'Carolyn Duncan',
+    name: 'Tony',
     imageUrl:
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-    name: 'Paul Pinnock',
+    name: 'Paul Cornwood',
     imageUrl:
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-      name: 'Elizabeth Wong',
-      imageUrl:
-          'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80'),
+    name: 'Mari Videl',
+    imageUrl:
+        'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
+  ),
   User(
-    name: 'James Lathrop',
+    name: 'Lara Croft',
     imageUrl:
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
   User(
-    name: 'Jessie Samson',
+    name: 'Jim Scott',
     imageUrl:
         'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    description: "Studies Architecture @ University of Architecture",
+    location: "New York",
+    joinDate: "March 2020",
   ),
 ];
 
@@ -175,10 +239,12 @@ final List<ExploreCard> exploreCards = [
   )
 ];
 
+final List<Post> recentPosts = [posts[1], posts[3]];
+
 final List<Post> posts = [
   Post(
     user: users[2],
-    title: 'Cool Project 1',
+    title: 'Art Work',
     description: 'Check out these cool puppers',
     imageUrl:
         'https://images.unsplash.com/photo-1610114190332-14d22f956ddd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=335&q=80',
@@ -187,9 +253,9 @@ final List<Post> posts = [
   ),
   Post(
     user: users[1],
-    title: 'Cool Project 2',
+    title: 'Project A',
     description:
-        'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        'Please enjoy this placeholder text',
     imageUrl:
         'https://images.unsplash.com/photo-1525286335722-c30c6b5df541?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=334&q=80',
     likes: 821,
@@ -197,7 +263,7 @@ final List<Post> posts = [
   ),
   Post(
     user: users[4],
-    title: 'Cool Project 3',
+    title: 'Building',
     description: 'This is a very good boi.',
     imageUrl:
         'https://images.unsplash.com/photo-1566869296469-609a90122355?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
@@ -206,7 +272,7 @@ final List<Post> posts = [
   ),
   Post(
     user: users[1],
-    title: 'Cool Project 4',
+    title: 'Modern Stuff',
     description: 'Adventure 🏔',
     imageUrl:
         'https://images.unsplash.com/photo-1610114190332-14d22f956ddd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=335&q=80',
@@ -215,9 +281,9 @@ final List<Post> posts = [
   ),
   Post(
     user: users[0],
-    title: 'Cool Project 5',
+    title: 'Different Type',
     description:
-        'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        'More placeholder text for the soul',
     imageUrl:
         'https://images.unsplash.com/photo-1458310336304-9b584acc9b58?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=267&q=80',
     likes: 251,
@@ -225,7 +291,7 @@ final List<Post> posts = [
   ),
   Post(
     user: users[1],
-    title: 'Cool Project 6',
+    title: 'Lorem',
     description: 'A classic.',
     imageUrl:
         'https://images.unsplash.com/photo-1585940043926-92f50991d354?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=375&q=80',
@@ -234,7 +300,7 @@ final List<Post> posts = [
   ),
   Post(
     user: users[4],
-    title: 'Cool Project 7',
+    title: 'Ipsum',
     description: 'This is a very good boi.',
     imageUrl:
         'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -243,7 +309,7 @@ final List<Post> posts = [
   ),
   Post(
     user: users[3],
-    title: 'Cool Project 8',
+    title: 'Cool Project',
     description: 'Adventure 🏔',
     imageUrl:
         'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80',
@@ -252,9 +318,9 @@ final List<Post> posts = [
   ),
   Post(
     user: users[0],
-    title: 'Cool Project 9',
+    title: 'Sky',
     description:
-        'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        'More placeholder text for the soul',
     imageUrl:
         'https://images.unsplash.com/photo-1461695008884-244cb4543d74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80',
     likes: 320,
@@ -262,7 +328,7 @@ final List<Post> posts = [
   ),
   Post(
     user: users[9],
-    title: 'Cool Project 10',
+    title: 'Project B',
     description: 'A classic.',
     imageUrl:
         'https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80',
