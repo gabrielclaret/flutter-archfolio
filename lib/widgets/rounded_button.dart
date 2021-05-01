@@ -4,13 +4,13 @@ import 'package:flutter_archfolio/config/palette.dart';
 class RoundedButton extends StatelessWidget {
   final String text;
   final Function press;
-  final Color color, textColor;
+  final Color textColor, buttonColor;
   const RoundedButton({
     Key key,
     this.text,
     this.press,
-    this.color = Palette.cardTheme,
-    this.textColor = Palette.iconTheme,
+    this.textColor = Colors.white,
+    this.buttonColor = Palette.mainLoginTheme,
   }) : super(key: key);
 
   @override
@@ -20,15 +20,15 @@ class RoundedButton extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 10),
       width: size.width * 0.8,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(29),
+        borderRadius: BorderRadius.circular(10),
         child: ElevatedButton(
           style: ButtonStyle(
             backgroundColor:
-                MaterialStateProperty.all<Color>(color),
+                MaterialStateProperty.all<Color>(buttonColor),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(29),
-                side: BorderSide(color: textColor)
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(color: Colors.transparent),
               ),
             ),
           ),

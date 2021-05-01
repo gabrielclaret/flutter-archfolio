@@ -12,6 +12,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  static const Color mainTheme = Palette.mainColorTheme;
   bool _isTimeline = false;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             title: Text(
               'profile',
               style: const TextStyle(
-                color: Palette.iconTheme,
+                color: mainTheme,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.9,
@@ -39,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: IconButton(
                   icon: Icon(Icons.edit),
                   iconSize: 25.0,
-                  color: Palette.iconTheme,
+                  color: mainTheme,
                   onPressed: () => print(
                     "Edit Profile",
                   ),
@@ -63,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Text(
                           'Posts',
                           style: const TextStyle(
-                            color: Palette.iconTheme,
+                            color: mainTheme,
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                             letterSpacing: -0.8,
@@ -74,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     IconButton(
                       icon: Icon(Icons.dehaze),
                       iconSize: 25.0,
-                      color: Palette.iconTheme,
+                      color: mainTheme,
                       onPressed: () {
                         setState(() {
                           _isTimeline = true;
@@ -84,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     IconButton(
                       icon: Icon(Icons.grid_view),
                       iconSize: 25.0,
-                      color: Palette.iconTheme,
+                      color: mainTheme,
                       onPressed: () {
                         setState(() {
                           _isTimeline = false;

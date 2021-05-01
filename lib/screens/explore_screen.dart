@@ -13,6 +13,7 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
+  static const Color mainTheme = Palette.mainColorTheme;
   TextEditingController controller;
 
   @override
@@ -33,7 +34,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             title: Text(
               'explore',
               style: const TextStyle(
-                color: Palette.iconTheme,
+                color: mainTheme,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.9,
@@ -52,7 +53,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     MaterialPageRoute(builder: (context) => SearchScreen()),
                   );
                 },
-                color: Palette.iconTheme,
+                color: mainTheme,
               )
             ],
           ),

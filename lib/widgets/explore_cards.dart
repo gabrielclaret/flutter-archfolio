@@ -28,7 +28,7 @@ class ExploreCards extends StatelessWidget {
               child: Text(
                 title,
                 style: const TextStyle(
-                  color: Palette.iconTheme,
+                  color: Palette.mainColorTheme,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.8,

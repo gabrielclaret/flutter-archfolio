@@ -16,6 +16,8 @@ class _SearchScreenState extends State<SearchScreen> {
   List<User> usersForDisplay;
   List<Post> postsForDisplay;
 
+  static const Color mainTheme = Palette.mainColorTheme;
+
   @override
   void initState() {
     usersForDisplay = recentUsers;
@@ -31,7 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
         appBar: AppBar(
           actions: [],
           iconTheme: IconThemeData(
-            color: Palette.iconTheme,
+            color: mainTheme,
           ),
           backgroundColor: Palette.cardTheme,
           title: Container(
@@ -45,15 +47,15 @@ class _SearchScreenState extends State<SearchScreen> {
                   hintText: 'search',
                   suffixIcon: Icon(
                     Icons.search,
-                    color: Palette.iconTheme,
+                    color: mainTheme,
                     size: 25,
                   ),
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Palette.iconTheme)),
+                      borderSide: BorderSide(color: mainTheme)),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Palette.iconTheme)),
+                      borderSide: BorderSide(color: mainTheme)),
                   border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Palette.iconTheme)),
+                      borderSide: BorderSide(color: mainTheme)),
                 ),
                 onChanged: (text) {
                   text = text.toLowerCase();
@@ -69,15 +71,15 @@ class _SearchScreenState extends State<SearchScreen> {
                     // adicionar postTags, e concatenar os resultados na lista postForDisplay
                   });
                 },
-                cursorColor: Palette.iconTheme,
+                cursorColor: mainTheme,
                 style: TextStyle(color: Palette.iconTheme),
               ),
             ),
           ),
           bottom: TabBar(
-            labelColor: Palette.iconTheme,
+            labelColor: mainTheme,
             unselectedLabelColor: Colors.grey[600],
-            indicatorColor: Palette.iconTheme,
+            indicatorColor: mainTheme,
             tabs: [
               Tab(text: 'user'),
               Tab(text: 'posts'),

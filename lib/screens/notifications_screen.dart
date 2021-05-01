@@ -9,6 +9,7 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
+  static const Color mainTheme = Palette.mainColorTheme;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +22,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             title: Text(
               'notifications',
               style: const TextStyle(
-                color: Palette.iconTheme,
+                color: mainTheme,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.9,

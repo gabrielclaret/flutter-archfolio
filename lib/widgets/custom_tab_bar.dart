@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/config/palette.dart';
 
 class CustomTabBar extends StatelessWidget {
+  static const Color mainTheme = Palette.mainColorTheme;
   final List<IconData> icons;
   final int selectedIndex;
   final Function(int) onTap;
@@ -22,13 +23,13 @@ class CustomTabBar extends StatelessWidget {
         border: isBottomIndicator
             ? Border(
                 bottom: BorderSide(
-                  color: Palette.iconTheme,
+                  color: mainTheme,
                   width: 3.0,
                 ),
               )
             : Border(
                 top: BorderSide(
-                  color: Palette.iconTheme,
+                  color: mainTheme,
                   width: 3.0,
                 ),
               ),
@@ -41,7 +42,7 @@ class CustomTabBar extends StatelessWidget {
                   icon: Icon(
                     e,
                     color: i == selectedIndex
-                        ? Palette.iconTheme
+                        ? mainTheme
                         : Palette.notSelectedTheme,
                     size: i == 2 ? 35.0 : 30.0, //create icon
                   ),

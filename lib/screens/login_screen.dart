@@ -8,51 +8,59 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Palette.iconTheme,
+        ),
+        shadowColor: Colors.transparent,
+        backgroundColor: Palette.backgroundTheme,
+      ),
+      backgroundColor: Palette.backgroundTheme,
       body: Container(
-          alignment: Alignment.center,
-          width: double.infinity,
-          height: size.height,
-          child: SingleChildScrollView(
-            child: Align(
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
+        alignment: Alignment.center,
+        width: double.infinity,
+        height: size.height,
+        child: SingleChildScrollView(
+          child: Align(
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ShaderMask(
+                  shaderCallback: (bounds) => Palette.createGradient.createShader(
+                    Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                  ),
+                  child: Text(
                     'archfolio',
                     style: const TextStyle(
-                      color: Palette.iconTheme,
+                      color: Colors.white,
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                       letterSpacing: -0.9,
                     ),
                   ),
-                  SizedBox(height: size.height * 0.03),
-                  RoundedInputField(
-                    color: Palette.cardTheme,
-                    textColor: Palette.iconTheme,
-                    hintText: "Your Username",
-                    onChanged: (value) {},
-                  ),
-                  RoundedPasswordField(
-                    color: Palette.cardTheme,
-                    textColor: Palette.iconTheme,
-                    onChanged: (value) {},
-                  ),
-                  RoundedButton(
-                    color: Palette.iconTheme,
-                    textColor: Palette.cardTheme,
-                    text: "LOGIN",
-                    press: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => NavScreen()));
-                    },
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(height: size.height * 0.1),
+                RoundedInputField(
+                  hintText: "your username",
+                  onChanged: (value) {},
+                ),
+                RoundedPasswordField(
+                  onChanged: (value) {},
+                ),
+                RoundedButton(
+                  text: "LOGIN",
+                  press: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => NavScreen()));
+                  },
+                ),
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

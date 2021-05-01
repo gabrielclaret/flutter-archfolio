@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static const Color mainTheme = Palette.mainColorTheme;
   bool _isTimeline = false;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text(
               'archfolio',
               style: const TextStyle(
-                color: Palette.iconTheme,
+                color: mainTheme,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.9,
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: IconButton(
                   icon: Icon(Icons.bookmark_outline_sharp),
                   iconSize: 30.0,
-                  color: Palette.iconTheme,
+                  color: mainTheme,
                   onPressed: () => print(
                     "Bookmarks",
                   ),
@@ -67,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Text(
                           'Posts',
                           style: const TextStyle(
-                            color: Palette.iconTheme,
+                            color: mainTheme,
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                             letterSpacing: -0.8,
@@ -78,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.dehaze),
                       iconSize: 25.0,
-                      color: Palette.iconTheme,
+                      color: mainTheme,
                       onPressed: () {
                         setState(() {
                           _isTimeline = true;
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.grid_view),
                       iconSize: 25.0,
-                      color: Palette.iconTheme,
+                      color: mainTheme,
                       onPressed: () {
                         setState(() {
                           _isTimeline = false;

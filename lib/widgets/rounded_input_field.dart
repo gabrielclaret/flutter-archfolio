@@ -4,7 +4,7 @@ import 'package:flutter_archfolio/config/palette.dart';
 class RoundedInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
-  final Color color, textColor;
+  final Color color, textColor, mainColor;
   final ValueChanged<String> onChanged;
 
   const RoundedInputField({
@@ -14,6 +14,7 @@ class RoundedInputField extends StatelessWidget {
     this.onChanged,
     this.color = Palette.cardTheme,
     this.textColor = Palette.iconTheme,
+    this.mainColor = Palette.mainLoginTheme,
   }) : super(key: key);
 
   @override
@@ -25,8 +26,8 @@ class RoundedInputField extends StatelessWidget {
       width: size.width * 0.8,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(29),
-        border: Border.all(color: textColor),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: mainColor),
       ),
       child: TextField(
         textAlignVertical: TextAlignVertical.center,
@@ -36,11 +37,11 @@ class RoundedInputField extends StatelessWidget {
         decoration: InputDecoration(
           icon: Icon(
             icon,
-            color: textColor,
+            color: mainColor,
           ),
           hintText: hintText,
           border: InputBorder.none,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: TextStyle(color: Colors.black54),
         ),
       ),
     );

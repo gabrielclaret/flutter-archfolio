@@ -3,12 +3,14 @@ import 'package:flutter_archfolio/config/palette.dart';
 
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
-  final Color color, textColor;
+  final Color color, textColor, mainColor;
+  final String hintText;
   const RoundedPasswordField({
     Key key,
     this.onChanged,
-    this.color = Palette.iconTheme,
-    this.textColor = Palette.cardTheme,
+    this.color = Palette.cardTheme,
+    this.textColor = Palette.iconTheme,
+    this.mainColor = Palette.mainLoginTheme, this.hintText = "password",
   }) : super(key: key);
 
   @override
@@ -20,8 +22,8 @@ class RoundedPasswordField extends StatelessWidget {
       width: size.width * 0.8,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(29),
-        border: Border.all(color: textColor),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: mainColor),
       ),
       child: TextField(
         textAlignVertical: TextAlignVertical.center,
@@ -30,16 +32,16 @@ class RoundedPasswordField extends StatelessWidget {
         onChanged: onChanged,
         cursorColor: textColor,
         decoration: InputDecoration(
-          hintText: "Password",
-          hintStyle: TextStyle(color: Colors.grey),
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.black54),
           icon: Icon(
             Icons.lock,
-            color: textColor,
+            color: mainColor,
           ),
-          suffixIcon: Icon(
-            Icons.visibility,
-            color: textColor,
-          ),
+          // suffixIcon: Icon(
+          //   Icons.visibility,
+          //   color: textColor,
+          // ),
           border: InputBorder.none,
         ),
       ),

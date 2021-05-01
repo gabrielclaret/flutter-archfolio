@@ -51,7 +51,7 @@ class PostCard extends StatelessWidget {
                     Text(
                       post.title,
                       style: const TextStyle(
-                        color: Palette.iconTheme,
+                        color: Palette.profileTheme,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         letterSpacing: -0.8,

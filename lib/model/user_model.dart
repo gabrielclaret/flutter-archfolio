@@ -7,6 +7,7 @@ class User {
   final String description;
   final String location;
   final String joinDate;
+  final String email;
   final List<Post> posts;
 
   const User({
@@ -15,6 +16,7 @@ class User {
     this.description,
     this.location,
     this.joinDate,
+    this.email,
     this.posts,
   });
 }
