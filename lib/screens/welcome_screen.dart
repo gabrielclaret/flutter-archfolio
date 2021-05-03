@@ -19,23 +19,17 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: size.height * 0.3),
-                ShaderMask(
-                  shaderCallback: (bounds) =>
-                      Palette.createGradient.createShader(
-                    Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-                  ),
-                  child: Text(
-                    'archfolio',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: -0.9,
-                    ),
+                SizedBox(height: size.height * 0.15),
+                Text(
+                  'archfolio',
+                  style: const TextStyle(
+                    color: Palette.mainLoginTheme,
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.9,
                   ),
                 ),
-                SizedBox(height: size.height * 0.25),
+                SizedBox(height: size.height * 0.1),
                 RoundedButton(
                   text: "LOGIN",
                   press: () {
@@ -44,6 +38,7 @@ class WelcomeScreen extends StatelessWidget {
                   },
                 ),
                 RoundedButton(
+                  buttonColor: Palette.secondaryColorTheme,
                   text: "SIGN UP",
                   press: () {
                     Navigator.push(

@@ -18,8 +18,8 @@ class RoundedPasswordField extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      width: size.width * 0.8,
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2),
+      width: size.width * 0.7,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
@@ -37,6 +37,7 @@ class RoundedPasswordField extends StatelessWidget {
           icon: Icon(
             Icons.lock,
             color: mainColor,
+            size: 22,
           ),
           // suffixIcon: Icon(
           //   Icons.visibility,

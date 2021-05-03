@@ -23,7 +23,7 @@ class Palette {
   //static const Color mainColorTheme = Color(0xFF283593);
   static const Color mainColorTheme = Colors.black;
   static const Color mainLoginTheme = Color(0xFF3846A4);
-  static const Color secondaryColorTheme = Color(0x66CE48B1);
+  static const Color secondaryColorTheme = Color(0xAA3846A4);
 
   static const LinearGradient cardGradient = LinearGradient(
     begin: Alignment.topCenter,

@@ -22,8 +22,8 @@ class RoundedInputField extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      width: size.width * 0.8,
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2),
+      width: size.width * 0.7,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
@@ -38,6 +38,7 @@ class RoundedInputField extends StatelessWidget {
           icon: Icon(
             icon,
             color: mainColor,
+            size: 22,
           ),
           hintText: hintText,
           border: InputBorder.none,

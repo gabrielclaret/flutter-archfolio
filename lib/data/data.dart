@@ -6,7 +6,7 @@ final User currentUser = User(
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
     posts: [
       posts[1],
       posts[3],
@@ -22,7 +22,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Jane Doe',
@@ -30,7 +30,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Matthew Hinkle',
@@ -38,7 +38,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Amy Smith',
@@ -46,7 +46,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Ed Morris',
@@ -54,7 +54,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Carolyn Duncan',
@@ -62,7 +62,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Paul Pinnock',
@@ -70,7 +70,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Elizabeth Wong',
@@ -78,7 +78,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'James Lathrop',
@@ -86,7 +86,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Jessie Samson',
@@ -94,7 +94,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'David Brooks',
@@ -102,7 +102,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Lee Yun',
@@ -110,7 +110,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Carolyn Brooks',
@@ -118,7 +118,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Jean Paul',
@@ -126,7 +126,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Lang Buddha',
@@ -134,7 +134,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Tony',
@@ -142,7 +142,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Paul Cornwood',
@@ -150,7 +150,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Mari Videl',
@@ -158,7 +158,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Lara Croft',
@@ -166,7 +166,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
   User(
     name: 'Jim Scott',
@@ -174,7 +174,7 @@ final List<User> users = [
         'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
     location: "New York",
-    joinDate: "March 2020",
+    joined_at: "March 2020",
   ),
 ];
 

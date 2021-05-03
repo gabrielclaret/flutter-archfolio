@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/config/palette.dart';
 import 'package:flutter_archfolio/model/models.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
+import 'dart:math';
 
 class ProfileCard extends StatelessWidget {
   final User user;
@@ -109,7 +110,7 @@ class ProfileCard extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 2.0),
                                 child: Text(
-                                  'Joined ${user.joinDate}',
+                                  'Joined ${user.joined_at.substring(0, 10)}',
                                   style: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 14.5,
