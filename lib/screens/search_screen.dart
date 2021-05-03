@@ -101,7 +101,6 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 }
 
-
 // deixar essa parte mais agnóstica
 
 class _SearchUsers extends StatefulWidget {
@@ -122,11 +121,12 @@ class __SearchUsersState extends State<_SearchUsers> {
         itemBuilder: (BuildContext context, int index) {
           final User user = widget.usersList[index];
           return GestureDetector(
-              onTap: () => print(user.name),
-              child: ProfileCard(
-                user: user,
-                isMiniature: true,
-              ));
+            onTap: () => print(user.name),
+            child: ProfileCard(
+              user: user,
+              isMiniature: true,
+            ),
+          );
         },
       ),
     );

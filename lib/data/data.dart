@@ -2,6 +2,8 @@ import 'package:flutter_archfolio/model/models.dart';
 
 final User currentUser = User(
     name: 'Jane Doe',
+    username: 'jdoe',
+    email: 'jdoe@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -18,6 +20,8 @@ final List<User> recentUsers = [users[1], users[3], users[6]];
 final List<User> users = [
   User(
     name: 'David Brooks',
+    username: 'dbrooks',
+    email: 'dbrooks@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -26,6 +30,8 @@ final List<User> users = [
   ),
   User(
     name: 'Jane Doe',
+    username: 'jdoe',
+    email: 'jdoe@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -34,6 +40,8 @@ final List<User> users = [
   ),
   User(
     name: 'Matthew Hinkle',
+    username: 'mhinkle',
+    email: 'mhinkle@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -42,6 +50,8 @@ final List<User> users = [
   ),
   User(
     name: 'Amy Smith',
+    username: 'asmith',
+    email: 'asmith@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -50,6 +60,8 @@ final List<User> users = [
   ),
   User(
     name: 'Ed Morris',
+    username:'emorris',
+    email: 'emorris@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -58,6 +70,8 @@ final List<User> users = [
   ),
   User(
     name: 'Carolyn Duncan',
+    username:'cduncan',
+    email: 'cduncan@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -66,6 +80,8 @@ final List<User> users = [
   ),
   User(
     name: 'Paul Pinnock',
+    username:'ppinnock',
+    email: 'ppinnock@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -74,6 +90,8 @@ final List<User> users = [
   ),
   User(
     name: 'Elizabeth Wong',
+    username:'ewong',
+    email: 'ewong@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -82,6 +100,8 @@ final List<User> users = [
   ),
   User(
     name: 'James Lathrop',
+    username:'jlathrop',
+    email: 'jlathrop@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -90,6 +110,8 @@ final List<User> users = [
   ),
   User(
     name: 'Jessie Samson',
+    username:'jsamson',
+    email: 'jsamson@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -97,7 +119,9 @@ final List<User> users = [
     joined_at: "March 2020",
   ),
   User(
-    name: 'David Brooks',
+    name: 'David Scott',
+    username: 'dscott',
+    email: 'dscott@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -106,6 +130,8 @@ final List<User> users = [
   ),
   User(
     name: 'Lee Yun',
+    username: 'lyun',
+    email: 'lyun@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -113,7 +139,9 @@ final List<User> users = [
     joined_at: "March 2020",
   ),
   User(
-    name: 'Carolyn Brooks',
+    name: 'Carolyn Paul',
+    username: 'cpaul',
+    email: 'cpaul@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -122,6 +150,8 @@ final List<User> users = [
   ),
   User(
     name: 'Jean Paul',
+    username: 'jpaul',
+    email: 'jpaul@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -130,6 +160,8 @@ final List<User> users = [
   ),
   User(
     name: 'Lang Buddha',
+    username: 'lbuddha',
+    email: 'lbuddha@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -138,6 +170,8 @@ final List<User> users = [
   ),
   User(
     name: 'Tony',
+    username: 'tony',
+    email: 'tony@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -146,6 +180,8 @@ final List<User> users = [
   ),
   User(
     name: 'Paul Cornwood',
+    username: 'pcornwood',
+    email: 'pcornwood@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -154,6 +190,8 @@ final List<User> users = [
   ),
   User(
     name: 'Mari Videl',
+    username: 'mvidel',
+    email: 'mvidel@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -162,6 +200,8 @@ final List<User> users = [
   ),
   User(
     name: 'Lara Croft',
+    username: 'lcroft',
+    email: 'lcroft@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
     description: "Studies Architecture @ University of Architecture",
@@ -169,7 +209,9 @@ final List<User> users = [
     joined_at: "March 2020",
   ),
   User(
-    name: 'Jim Scott',
+    name: 'Jim Morris',
+    username: 'jmorris',
+    email: 'jmorris@something.com',
     imageUrl:
         'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     description: "Studies Architecture @ University of Architecture",

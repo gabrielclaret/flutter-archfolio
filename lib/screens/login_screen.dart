@@ -93,7 +93,7 @@ fetchUser(String username, password) async {
   };
 
   final response = await http.get(Uri.http('192.168.0.36:8000',
-      '/archfolio/v1/users', request)); //?username=test&password=testp
+      '/archfolio/v1/users', request)); 
 
   if (response.statusCode == 200) {
     await prefs.setString("user", response.body);

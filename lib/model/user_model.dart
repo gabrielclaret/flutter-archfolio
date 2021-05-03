@@ -31,7 +31,7 @@ class User {
       email: json['email'],
       location: "brasil",
       joined_at: json['joined_at'],
-      posts: json['posts'],
+      posts: [],
     );
   }
 

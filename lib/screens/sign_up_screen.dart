@@ -107,14 +107,15 @@ class SignUpScreen extends StatelessWidget {
 createUser(String name, email, username, password) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var body = new Map<String, dynamic>();
-
+  List posts = [];
   body['text'] = jsonEncode({
     "name": name,
     "email": email,
     "username": username,
     "password": password,
-    "description": "haha",
-    "location": "br"
+    "description": "Here is my description",
+    "location": "Brasil",
+    "posts": posts,
   });
   
   final response = await http
