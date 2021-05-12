@@ -6,6 +6,7 @@ import 'package:flutter_archfolio/config/palette.dart';
 import 'package:flutter_archfolio/data/data.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 import 'package:flutter_archfolio/model/models.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class ExploreScreen extends StatefulWidget {
   @override
@@ -56,6 +57,27 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 color: mainTheme,
               )
             ],
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+            sliver: SliverToBoxAdapter(
+              child: ExploreCards(
+                title: 'just for you',
+                exploreCards: exploreCards,
+              ),
+            ),
+          ),
+          SliverStaggeredGrid.countBuilder(
+            crossAxisCount: 4,
+            mainAxisSpacing: 2.0,
+            crossAxisSpacing: 2.0,
+            itemCount: posts.length,
+            itemBuilder: (BuildContext context, int index) {
+              final Post post = posts[index];
+              return PostContainer(post: post, showStats: false);
+            },
+            staggeredTileBuilder: (int index) =>
+                new StaggeredTile.count(2, index.isEven ? 3 : 2),
           ),
         ],
       ),
