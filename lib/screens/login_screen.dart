@@ -15,6 +15,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
   String _username = "";
   String _password = "";
   bool _login = false;
@@ -54,18 +56,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: size.height * 0.1),
                 RoundedInputField(
                   hintText: "your username",
-                  onChanged: (text) {
-                    _username = text;
-                  },
+                  controller: usernameController,
                 ),
                 RoundedPasswordField(
-                  onChanged: (text) {
-                    _password = text;
-                  },
+                  passwordController: passwordController,
                 ),
                 RoundedButton(
                   text: "LOGIN",
                   press: () async {
+                    _username = usernameController.text;
+                    _password = passwordController.text;
+                    print(_username);
+                    print(_password);
                     loggedUser = await fetchUser(_username, _password);
                     if (loggedUser != null) {
                       Navigator.pop(context);
@@ -91,7 +93,6 @@ fetchUser(String username, password) async {
     "identification": username,
     "password": password
   };
-
   final response = await http.get(Uri.http('192.168.0.36:8000',
       '/archfolio/v1/users', request)); 
 

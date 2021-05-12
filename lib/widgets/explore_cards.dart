@@ -8,11 +8,13 @@ import 'package:flutter_archfolio/widgets/widgets.dart';
 class ExploreCards extends StatelessWidget {
   final List<ExploreCard> exploreCards;
   final String title;
+  final bool seeMore;
 
   const ExploreCards({
     Key key,
     @required this.exploreCards,
     @required this.title,
+    this.seeMore = false,
   }) : super(key: key);
 
   @override
@@ -20,38 +22,22 @@ class ExploreCards extends StatelessWidget {
     return Card(
       color: Palette.cardTheme,
       child: Container(
-        height: 200.0,
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 0.0),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  color: Palette.mainColorTheme,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -0.8,
-                ),
-              ),
+        height: 180.0,
+        child:  ListView.builder(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 8.0,
             ),
-            ListView.builder(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10.0,
-                horizontal: 8.0,
-              ),
-              scrollDirection: Axis.horizontal,
-              itemCount: exploreCards.length,
-              itemBuilder: (BuildContext context, int index) {
-                final ExploreCard card = exploreCards[index];
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
-                  child: _ExploreCard(card: card),
-                );
-              },
-            ),
-          ],
-        ),
+            scrollDirection: Axis.horizontal,
+            itemCount: exploreCards.length,
+            itemBuilder: (BuildContext context, int index) {
+              final ExploreCard card = exploreCards[index];
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 0.0),
+                child: _ExploreCard(card: card),
+              );
+            },
+          ),
       ),
     );
   }

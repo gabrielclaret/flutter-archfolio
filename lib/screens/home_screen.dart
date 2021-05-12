@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: const EdgeInsets.all(6.0),
                 child: IconButton(
                   icon: Icon(Icons.bookmark_outline_sharp),
-                  iconSize: 30.0,
+                  iconSize: 25.0,
                   color: mainTheme,
                   onPressed: () => print(
                     "Bookmarks",
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
             sliver: SliverToBoxAdapter(
               child: ExploreCards(
-                title: 'Explore',
+                title: 'explore',
                 exploreCards: exploreCards,
               ),
             ),
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          'Posts',
+                          'posts',
                           style: const TextStyle(
                             color: mainTheme,
                             fontSize: 18.0,
@@ -76,26 +76,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    IconButton(
-                      icon: Icon(Icons.dehaze),
-                      iconSize: 25.0,
-                      color: mainTheme,
-                      onPressed: () {
-                        setState(() {
-                          _isTimeline = true;
-                        });
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.grid_view),
-                      iconSize: 25.0,
-                      color: mainTheme,
-                      onPressed: () {
-                        setState(() {
-                          _isTimeline = false;
-                        });
-                      },
-                    ),
+                    !_isTimeline
+                        ? IconButton(
+                            icon: Icon(Icons.dehaze),
+                            iconSize: 25.0,
+                            color: mainTheme,
+                            onPressed: () {
+                              setState(() {
+                                _isTimeline = true;
+                              });
+                            },
+                          )
+                        : IconButton(
+                            icon: Icon(Icons.grid_view),
+                            iconSize: 25.0,
+                            color: mainTheme,
+                            onPressed: () {
+                              setState(() {
+                                _isTimeline = false;
+                              });
+                            },
+                          ),
                   ],
                 ),
               ),
@@ -104,8 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverGrid(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: _isTimeline ? 500 : 300,
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
+              mainAxisSpacing: 3.0,
+              crossAxisSpacing: 3.0,
               childAspectRatio: _isTimeline ? 1.1 : 0.95,
             ),
             delegate: SliverChildBuilderDelegate(

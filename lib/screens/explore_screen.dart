@@ -48,7 +48,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 iconSize: 25,
                 icon: Icon(Icons.search),
                 onPressed: () {
-                  //showSearch(context: context, delegate: UserSearch());
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => SearchScreen()),
@@ -69,8 +68,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
           SliverStaggeredGrid.countBuilder(
             crossAxisCount: 4,
-            mainAxisSpacing: 2.0,
-            crossAxisSpacing: 2.0,
+            mainAxisSpacing: 3.0,
+            crossAxisSpacing: 3.0,
             itemCount: posts.length,
             itemBuilder: (BuildContext context, int index) {
               final Post post = posts[index];

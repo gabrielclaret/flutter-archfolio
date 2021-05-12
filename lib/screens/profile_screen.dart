@@ -88,26 +88,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    IconButton(
-                      icon: Icon(Icons.dehaze),
-                      iconSize: 25.0,
-                      color: mainTheme,
-                      onPressed: () {
-                        setState(() {
-                          _isTimeline = true;
-                        });
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.grid_view),
-                      iconSize: 25.0,
-                      color: mainTheme,
-                      onPressed: () {
-                        setState(() {
-                          _isTimeline = false;
-                        });
-                      },
-                    ),
+                    !_isTimeline
+                        ? IconButton(
+                            icon: Icon(Icons.dehaze),
+                            iconSize: 25.0,
+                            color: mainTheme,
+                            onPressed: () {
+                              setState(() {
+                                _isTimeline = true;
+                              });
+                            },
+                          )
+                        : IconButton(
+                            icon: Icon(Icons.grid_view),
+                            iconSize: 25.0,
+                            color: mainTheme,
+                            onPressed: () {
+                              setState(() {
+                                _isTimeline = false;
+                              });
+                            },
+                          ),
                   ],
                 ),
               ),
@@ -141,8 +142,8 @@ Widget _showPosts(User loggedUser, bool isTimeline) {
   return SliverGrid(
     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
       maxCrossAxisExtent: isTimeline ? 500 : 300,
-      mainAxisSpacing: 10.0,
-      crossAxisSpacing: 10.0,
+      mainAxisSpacing: 3.0,
+      crossAxisSpacing: 3.0,
       childAspectRatio: isTimeline ? 1.1 : 0.95,
     ),
     delegate: SliverChildBuilderDelegate(

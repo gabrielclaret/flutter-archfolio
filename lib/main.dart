@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_archfolio/data/data.dart';
 import 'screens/screens.dart';
 import 'config/palette.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Palette.scaffold,
       ),
-      home: NavScreen(),
+      home: NavScreen(user: currentUser),
     );
   }
 }

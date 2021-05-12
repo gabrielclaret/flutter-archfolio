@@ -5,16 +5,16 @@ class RoundedInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final Color color, textColor, mainColor;
-  final ValueChanged<String> onChanged;
+  final TextEditingController controller;
 
   const RoundedInputField({
     Key key,
     this.hintText,
     this.icon = Icons.person,
-    this.onChanged,
     this.color = Palette.cardTheme,
     this.textColor = Palette.iconTheme,
-    this.mainColor = Palette.mainLoginTheme,
+    this.mainColor = Palette.mainLoginTheme, 
+    @required this.controller,
   }) : super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class RoundedInputField extends StatelessWidget {
       child: TextField(
         textAlignVertical: TextAlignVertical.center,
         style: TextStyle(color: textColor),
-        onChanged: onChanged,
+        controller: controller,
         cursorColor: textColor,
         decoration: InputDecoration(
           icon: Icon(

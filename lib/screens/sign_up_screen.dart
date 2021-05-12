@@ -14,6 +14,12 @@ class SignUpScreen extends StatelessWidget {
   String _username = "";
   String _email = "";
   String _password = "";
+  String _repeatPasswordField = "";
+  TextEditingController nameController;
+  TextEditingController usernameController;
+  TextEditingController emailController;
+  TextEditingController passwordController;
+  TextEditingController repeatPasswordController;
   User loggedUser;
 
   @override
@@ -50,31 +56,23 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(height: size.height * 0.1),
                 RoundedInputField(
                   hintText: "name",
-                  onChanged: (text) {
-                    _name = text;
-                  },
+                  controller: nameController,
                 ),
                 RoundedInputField(
                   hintText: "username",
-                  onChanged: (text) {
-                    _username = text;
-                  },
+                  controller: usernameController,
                 ),
                 RoundedInputField(
-                  hintText: "email",
-                  icon: Icons.email,
-                  onChanged: (text) {
-                    _email = text;
-                  },
-                ),
+                    hintText: "email",
+                    icon: Icons.email,
+                    controller: emailController),
                 RoundedPasswordField(
                   hintText: "password",
-                  onChanged: (text) {
-                    _password = text;
-                  },
+                  passwordController: passwordController,
                 ),
                 RoundedPasswordField(
                   hintText: "repeat password",
+                  passwordController: repeatPasswordController,
                   onChanged: (text) {
                     if (text != _password) {
                       print("password is not the same");
@@ -86,12 +84,37 @@ class SignUpScreen extends StatelessWidget {
                 RoundedButton(
                   text: "SIGN UP",
                   press: () async {
-                    print(_name);
-                    loggedUser = await createUser(_name, _email, _username, _password);
-                    if (loggedUser != null) {
-                      Navigator.pop(context);
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => NavScreen(user: loggedUser,)));
+                    _name = nameController.text;
+                    _username = usernameController.text;
+                    _email = emailController.text;
+                    _password = passwordController.text;
+                    _repeatPasswordField = repeatPasswordController.text;
+                    print("_name: $_name");
+                    print("_username: $_username");
+                    print("_email: $_email");
+                    print("_password: $_password");
+                    print("_repeatPasswordField $_repeatPasswordField");
+                    if (_password != _repeatPasswordField) {
+                      print("password and repeat password are not the same");
+                    } else if (_username.isEmpty |
+                        _name.isEmpty |
+                        _email.isEmpty |
+                        _password.isEmpty) {
+                      print("field is empty");
+                    } else {
+                      print(_name);
+                      loggedUser =
+                          await createUser(_name, _email, _username, _password);
+                      if (loggedUser != null) {
+                        Navigator.pop(context);
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => NavScreen(
+                              user: loggedUser,
+                            ),
+                          ),
+                        );
+                      }
                     }
                   },
                 ),
@@ -117,13 +140,13 @@ createUser(String name, email, username, password) async {
     "location": "Brasil",
     "posts": posts,
   });
-  
+
   final response = await http
       .post(Uri.http('192.168.0.36:8000', '/archfolio/v1/users'), body: body);
 
   if (response.statusCode == 200) {
     await prefs.setString("user", response.body);
-    
+
     return User.fromJson(jsonDecode(response.body));
   } else {
     print("n ta bao");
