@@ -114,45 +114,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           ),
-          loggedUser.posts.isEmpty
-              ? SliverToBoxAdapter(
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: Center(
-                          child: Text(
-                        "User doesn't have posts yet.",
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15.0,
-                          letterSpacing: -0.8,
-                        ),
-                      )),
-                    ),
-                  ),
-                )
-              : _showPosts(loggedUser, _isTimeline),
+          // loggedUser.posts.isEmpty
+          //     ? SliverToBoxAdapter(
+          //         child: Card(
+          //           child: Padding(
+          //             padding: const EdgeInsets.symmetric(vertical: 20.0),
+          //             child: Center(
+          //                 child: Text(
+          //               "User doesn't have posts yet.",
+          //               style: const TextStyle(
+          //                 color: Colors.grey,
+          //                 fontSize: 15.0,
+          //                 letterSpacing: -0.8,
+          //               ),
+          //             )),
+          //           ),
+          //         ),
+          //       )
+          //     : _showPosts(loggedUser, _isTimeline),
         ],
       ),
     );
   }
 }
 
-Widget _showPosts(User loggedUser, bool isTimeline) {
-  return SliverGrid(
-    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-      maxCrossAxisExtent: isTimeline ? 500 : 300,
-      mainAxisSpacing: 3.0,
-      crossAxisSpacing: 3.0,
-      childAspectRatio: isTimeline ? 1.1 : 0.95,
-    ),
-    delegate: SliverChildBuilderDelegate(
-      (BuildContext context, int index) {
-        final Post post = loggedUser.posts[index];
+// Widget _showPosts(User loggedUser, bool isTimeline) {
+//   return SliverGrid(
+//     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+//       maxCrossAxisExtent: isTimeline ? 500 : 300,
+//       mainAxisSpacing: 3.0,
+//       crossAxisSpacing: 3.0,
+//       childAspectRatio: isTimeline ? 1.1 : 0.95,
+//     ),
+//     delegate: SliverChildBuilderDelegate(
+//       (BuildContext context, int index) {
+//         final Post post = loggedUser.posts[index];
 
-        return post != null ? PostContainer(post: post) : Container();
-      },
-      childCount: loggedUser.posts.length,
-    ),
-  );
-}
+//         return post != null ? PostContainer(post: post) : Container();
+//       },
+//       childCount: loggedUser.posts.length,
+//     ),
+//   );
+// }

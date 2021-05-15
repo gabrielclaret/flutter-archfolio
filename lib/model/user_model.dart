@@ -2,6 +2,7 @@ import 'package:meta/meta.dart';
 import 'models.dart';
 
 class User {
+  final int id;
   final String name;
   final String username;
   final String email;
@@ -9,9 +10,9 @@ class User {
   final String description;
   final String location;
   final String joined_at;
-  final List<Post> posts;
 
   const User({
+    @required this.id,
     @required this.name,
     @required this.username,
     @required this.imageUrl,
@@ -19,24 +20,24 @@ class User {
     this.description,
     this.location,
     this.joined_at,
-    this.posts,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
+      id: json['id'],
       name: json['name'],
-      imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-      description: "description",
+      imageUrl: json['pfp_url'],
+      description: json['description'],
       username: json['username'],
       email: json['email'],
-      location: "brasil",
+      location: json['location'],
       joined_at: json['joined_at'],
-      posts: [],
     );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> user = Map<String, dynamic>();
+    user["id"] = id;
     user["name"] = name;
     user["imageUrl"] = imageUrl;
     user["description"] = description;
@@ -44,7 +45,6 @@ class User {
     user["username"] = username;
     user["location"] = location;
     user["joined_at"] = joined_at;
-    user["posts"] = posts;
     return user;
   }
 }

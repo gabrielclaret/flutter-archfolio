@@ -38,7 +38,7 @@ class PostCard extends StatelessWidget {
                       radius: isMiniature ? 29 : 60.0,
                       backgroundColor: Colors.grey[200],
                       backgroundImage:
-                          CachedNetworkImageProvider(post.imageUrl),
+                          CachedNetworkImageProvider('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80'),
                     ),
                   ),
                 ),

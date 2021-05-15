@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_archfolio/config/settings.dart';
 
 import 'package:flutter_archfolio/model/models.dart';
 import 'package:flutter_archfolio/config/palette.dart';
+import 'package:flutter_archfolio/screens/view_post_screen.dart';
+import 'package:http/http.dart' as http;
 
 import 'widgets.dart';
 
@@ -19,15 +24,18 @@ class PostContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print(
-        "Clicked post ${post.title}",
-      ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ViewPostScreen(post: post)),
+        );
+      },
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(0.0),
             child: CachedNetworkImage(
-              imageUrl: post.imageUrl,
+              imageUrl: post.thumbnail,
               height: double.infinity,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -71,23 +79,23 @@ class PostContainer extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-          showStats
-              ? Positioned(
-                  bottom: 4.0,
-                  left: 8.0,
-                  right: 8.0,
-                  child: Text(
-                    post.user.name,
-                    style: const TextStyle(
-                      fontSize: 12.0,
-                      color: Palette.postTheme,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                )
-              : SizedBox.shrink(),
+          // showStats
+          //     ? Positioned(
+          //         bottom: 4.0,
+          //         left: 8.0,
+          //         right: 8.0,
+          //         child: Text(
+          //           post.user.name,
+          //           style: const TextStyle(
+          //             fontSize: 12.0,
+          //             color: Palette.postTheme,
+          //             fontWeight: FontWeight.bold,
+          //           ),
+          //           maxLines: 1,
+          //           overflow: TextOverflow.ellipsis,
+          //         ),
+          //       )
+          //     : SizedBox.shrink(),
           showStats
               ? Positioned(
                   child: Padding(

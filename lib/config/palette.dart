@@ -20,6 +20,7 @@ class Palette {
   static const Color profileTheme = Color(0xFF283593);
   //static const Color profileTheme = Colors.redAccent; 
   static const Color backgroundTheme = Colors.white;
+  static const Color mainTextColorTheme = Colors.white;
   //static const Color mainColorTheme = Color(0xFF283593);
   static const Color mainColorTheme = Colors.black;
   static const Color mainLoginTheme = Color(0xFF3846A4);

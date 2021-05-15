@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/config/palette.dart';
+import 'package:flutter_archfolio/config/settings.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 import 'screens.dart';
 
@@ -142,7 +143,7 @@ createUser(String name, email, username, password) async {
   });
 
   final response = await http
-      .post(Uri.http('192.168.0.36:8000', '/archfolio/v1/users'), body: body);
+      .post(Uri.http(Settings.apiUrl, '/archfolio/v1/users'), body: body);
 
   if (response.statusCode == 200) {
     await prefs.setString("user", response.body);

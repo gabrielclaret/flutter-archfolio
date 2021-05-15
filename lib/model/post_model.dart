@@ -1,19 +1,20 @@
 import 'package:meta/meta.dart';
-import 'models.dart';
 
 class Post {
-  final User user;
+  final int id;
+  final int userId;
   final String title;
   final String description;
-  final String imageUrl;
+  final String thumbnail;
   final int likes;
   final int views;
 
   const Post({
-    @required this.user,
+    @required this.id,
+    @required this.userId,
     @required this.title,
     @required this.description,
-    @required this.imageUrl,
+    @required this.thumbnail,
     @required this.likes,
     @required this.views,
   });
