@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_archfolio/config/palette.dart';
 import 'package:flutter_archfolio/data/data.dart';
 import 'package:flutter_archfolio/model/models.dart';
+import 'package:flutter_archfolio/screens/edit_profile_screen.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,8 +55,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   icon: Icon(Icons.edit),
                   iconSize: 25.0,
                   color: mainTheme,
-                  onPressed: () => print(
-                    "Edit Profile",
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditProfileScreen(
+                        loggedUser: loggedUser,
+                      ),
+                    ),
                   ),
                 ),
               ),

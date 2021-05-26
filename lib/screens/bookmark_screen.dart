@@ -1,31 +1,33 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/config/palette.dart';
-import 'package:flutter_archfolio/data/data.dart';
-import 'package:flutter_archfolio/screens/bookmark_screen.dart';
-import 'package:flutter_archfolio/widgets/widgets.dart';
-import 'package:flutter_archfolio/model/models.dart';
 
-class HomeScreen extends StatefulWidget {
+class BookmarkScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _BookmarkScreenState createState() => _BookmarkScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  static const Color mainTheme = Palette.mainColorTheme;
+class _BookmarkScreenState extends State<BookmarkScreen> {
   bool _isTimeline = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.backgroundTheme,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            leading: IconButton(
+                  icon: Icon(Icons.arrow_back_outlined, color: Palette.mainColorTheme,),
+                  tooltip: 'Click to Home Screen',
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
             brightness: Brightness.light,
             backgroundColor: Palette.cardTheme,
             title: Text(
-              'archfolio',
+              'bookmarks',
               style: const TextStyle(
-                color: mainTheme,
+                color: Palette.mainColorTheme,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.9,
@@ -33,34 +35,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             centerTitle: false,
             floating: true,
-            actions: [
-              Container(
-                margin: const EdgeInsets.all(6.0),
-                child: IconButton(
-                  icon: Icon(Icons.bookmark_outline_sharp),
-                  iconSize: 25.0,
-                  color: mainTheme,
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BookmarkScreen(),
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-            sliver: SliverToBoxAdapter(
-              child: ExploreCards(
-                title: 'explore',
-                exploreCards: exploreCards,
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
+            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
             sliver: SliverToBoxAdapter(
               child: Card(
                 color: Palette.cardTheme,
@@ -70,9 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          'posts',
+                          'Posts',
                           style: const TextStyle(
-                            color: mainTheme,
+                            color: Palette.mainColorTheme,
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                             letterSpacing: -0.8,
@@ -84,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? IconButton(
                             icon: Icon(Icons.dehaze),
                             iconSize: 25.0,
-                            color: mainTheme,
+                            color: Palette.mainColorTheme,
                             onPressed: () {
                               setState(() {
                                 _isTimeline = true;
@@ -94,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         : IconButton(
                             icon: Icon(Icons.grid_view),
                             iconSize: 25.0,
-                            color: mainTheme,
+                            color: Palette.mainColorTheme,
                             onPressed: () {
                               setState(() {
                                 _isTimeline = false;
@@ -106,21 +83,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SliverGrid(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: _isTimeline ? 500 : 300,
-              mainAxisSpacing: 3.0,
-              crossAxisSpacing: 3.0,
-              childAspectRatio: _isTimeline ? 1.1 : 0.95,
+          SliverToBoxAdapter(
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Center(
+                  child: Text(
+                    "User doesn't have Bookmarks yet.",
+                    style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 15.0,
+                      letterSpacing: -0.8,
+                    ),
+                  ),
+                ), //pegar essa parte do profile_screen
+              ),
             ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                final Post post = posts[index];
-                return PostContainer(post: post);
-              },
-              childCount: posts.length,
-            ),
-          ),
+          )
         ],
       ),
     );

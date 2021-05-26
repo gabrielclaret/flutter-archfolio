@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'dart:developer';
 import 'package:flutter_archfolio/config/palette.dart';
 import 'package:flutter_archfolio/model/models.dart';
+import 'package:flutter_archfolio/screens/view_post_screen.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 
 class ExploreCards extends StatelessWidget {
@@ -23,21 +24,25 @@ class ExploreCards extends StatelessWidget {
       color: Palette.cardTheme,
       child: Container(
         height: 180.0,
-        child:  ListView.builder(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10.0,
-              horizontal: 8.0,
-            ),
-            scrollDirection: Axis.horizontal,
-            itemCount: exploreCards.length,
-            itemBuilder: (BuildContext context, int index) {
-              final ExploreCard card = exploreCards[index];
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 0.0),
-                child: _ExploreCard(card: card),
-              );
-            },
+        child: ListView.builder(
+          padding: const EdgeInsets.symmetric(
+            vertical: 10.0,
+            horizontal: 8.0,
           ),
+          scrollDirection: Axis.horizontal,
+          itemCount: exploreCards.length,
+          itemBuilder: (BuildContext context, int index) {
+            final ExploreCard card = exploreCards[index];
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 0.0),
+              child: InkWell(
+                  onTap: () {
+                    print('post $index');
+                  },
+                  child: _ExploreCard(card: card)),
+            );
+          },
+        ),
       ),
     );
   }

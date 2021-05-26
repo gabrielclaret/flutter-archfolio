@@ -6,6 +6,7 @@ class RoundedInputField extends StatelessWidget {
   final IconData icon;
   final Color color, textColor, mainColor;
   final TextEditingController controller;
+  final bool isEditing;
 
   const RoundedInputField({
     Key key,
@@ -13,8 +14,9 @@ class RoundedInputField extends StatelessWidget {
     this.icon = Icons.person,
     this.color = Palette.cardTheme,
     this.textColor = Palette.iconTheme,
-    this.mainColor = Palette.mainLoginTheme, 
+    this.mainColor = Palette.mainLoginTheme,
     @required this.controller,
+    this.isEditing = false,
   }) : super(key: key);
 
   @override

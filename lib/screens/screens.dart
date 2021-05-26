@@ -7,3 +7,4 @@ export 'profile_screen.dart';
 export 'search_screen.dart';
 export 'sign_up_screen.dart';
 export 'welcome_screen.dart';
+export 'create_post_screen.dart';
