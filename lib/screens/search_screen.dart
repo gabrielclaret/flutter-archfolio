@@ -41,6 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Align(
               alignment: Alignment.center,
               child: TextField(
+                key: const Key('searchField'),
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(
                       15, 20, 0, 0), // top padding is half the container height

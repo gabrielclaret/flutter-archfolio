@@ -88,6 +88,7 @@ class EditProfileScreen extends StatelessWidget {
                   },
                 ),
                 RoundedButton(
+                  key: const Key('saveButton'),
                   text: "SAVE",
                   press: ()  {
                     _name = nameController.text;

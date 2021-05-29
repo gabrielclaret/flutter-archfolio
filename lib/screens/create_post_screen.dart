@@ -60,6 +60,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         backgroundColor: Palette.cardTheme,
         title: Text(
           'create post',
+          key: const Key('createScreenText'),
           style: const TextStyle(
             color: Palette.mainColorTheme,
             fontSize: 20.0,
@@ -179,6 +180,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       },
       child: add
           ? PopupMenuButton(
+              key: const Key('addContentButton'),
               child: Container(
                 width: 30,
                 height: 30,
@@ -201,6 +203,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
               },
               itemBuilder: (context) => [
                 PopupMenuItem(
+                  key: const Key('addTextPopup'),
                   value: true,
                   child: Row(
                     children: <Widget>[
@@ -227,6 +230,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
               ],
             )
           : InkWell(
+              key: const Key('removeContentButton'),
               onTap: () {
                 contentList.removeAt(index);
                 setState(() {});
@@ -278,6 +282,7 @@ class _ContentTextFieldsState extends State<ContentTextFields> {
     });
 
     return TextFormField(
+      key: Key('contentTextField'),
       controller: _nameController,
       onChanged: (v) => _CreatePostScreenState.contentList[widget.index] = v,
       decoration: InputDecoration(

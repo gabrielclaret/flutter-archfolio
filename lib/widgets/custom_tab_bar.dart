@@ -41,6 +41,7 @@ class CustomTabBar extends StatelessWidget {
                 Tab(
                   icon: Icon(
                     e,
+                    key: Key("tab" + i.toString()),
                     color: i == selectedIndex
                         ? mainTheme
                         : Palette.notSelectedTheme,

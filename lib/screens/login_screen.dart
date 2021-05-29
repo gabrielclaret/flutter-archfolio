@@ -56,21 +56,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: size.height * 0.1),
                 RoundedInputField(
+                  key: const Key('usernameFieldLScreen'),
                   hintText: "your username",
                   controller: usernameController,
                 ),
                 RoundedPasswordField(
+                  key: const Key('passwordFieldLScreen'),
                   passwordController: passwordController,
                 ),
                 RoundedButton(
+                  key: const Key('loginButtonLScreen'),
                   text: "LOGIN",
                   press: () async {
                     _username = usernameController.text;
                     _password = passwordController.text;
-                    print(_username);
-                    print(_password);
+                    
                     loggedUser = await fetchUser(_username, _password);
                     if (loggedUser != null) {
+                      print("Log In successfull");
                       Navigator.pop(context);
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => NavScreen(
@@ -102,7 +105,7 @@ fetchUser(String username, password) async {
 
     return User.fromJson(jsonDecode(response.body));
   } else {
-    print("n ta bao");
+    print("Couldn't login");
     return null;
   }
 }

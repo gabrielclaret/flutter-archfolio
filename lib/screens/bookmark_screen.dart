@@ -26,6 +26,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
             backgroundColor: Palette.cardTheme,
             title: Text(
               'bookmarks',
+              key: const Key('bookmarkScreenText'),
               style: const TextStyle(
                 color: Palette.mainColorTheme,
                 fontSize: 20.0,

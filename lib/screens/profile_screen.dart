@@ -39,6 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             backgroundColor: Palette.cardTheme,
             title: Text(
               'profile',
+              key: const Key('profileScreenText'),
               style: const TextStyle(
                 color: mainTheme,
                 fontSize: 20.0,
@@ -52,6 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 margin: const EdgeInsets.all(6.0),
                 child: IconButton(
+                  key: const Key('editProfileButton'),
                   icon: Icon(Icons.edit),
                   iconSize: 25.0,
                   color: mainTheme,

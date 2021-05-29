@@ -80,6 +80,7 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                 ),
                 title: Text(
                   post.title,
+                  key: const Key('postTitleViewPostScreen'),
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 23.0,

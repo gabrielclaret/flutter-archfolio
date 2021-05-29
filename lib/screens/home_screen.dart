@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Palette.cardTheme,
             title: Text(
               'archfolio',
+              key: const Key('homeScreenText'),
               style: const TextStyle(
                 color: mainTheme,
                 fontSize: 20.0,
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 margin: const EdgeInsets.all(6.0),
                 child: IconButton(
+                  key: const Key('bookmarkButton'),
                   icon: Icon(Icons.bookmark_outline_sharp),
                   iconSize: 25.0,
                   color: mainTheme,

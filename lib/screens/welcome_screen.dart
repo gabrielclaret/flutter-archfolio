@@ -31,6 +31,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.1),
                 RoundedButton(
+                  key: const Key('loginButton'),
                   text: "LOGIN",
                   press: () {
                     Navigator.push(context,
@@ -38,6 +39,7 @@ class WelcomeScreen extends StatelessWidget {
                   },
                 ),
                 RoundedButton(
+                  key: const Key('signUpButton'),
                   buttonColor: Palette.secondaryColorTheme,
                   text: "SIGN UP",
                   press: () {

@@ -56,22 +56,27 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.1),
                 RoundedInputField(
+                  key: const Key('nameFieldSUScreen'),
                   hintText: "name",
                   controller: nameController,
                 ),
                 RoundedInputField(
+                  key: const Key('usernameFieldSUScreen'),
                   hintText: "username",
                   controller: usernameController,
                 ),
                 RoundedInputField(
+                  key: const Key('emailFieldSUScreen'),
                     hintText: "email",
                     icon: Icons.email,
                     controller: emailController),
                 RoundedPasswordField(
+                  key: const Key('passwordFieldSUScreen'),
                   hintText: "password",
                   passwordController: passwordController,
                 ),
                 RoundedPasswordField(
+                  key: const Key('rpasswordFieldSUScreen'),
                   hintText: "repeat password",
                   passwordController: repeatPasswordController,
                   onChanged: (text) {
@@ -83,6 +88,7 @@ class SignUpScreen extends StatelessWidget {
                   },
                 ),
                 RoundedButton(
+                  key: const Key('signUpButtonSUScreen'),
                   text: "SIGN UP",
                   press: () async {
                     _name = nameController.text;
@@ -138,8 +144,7 @@ createUser(String name, email, username, password) async {
     "username": username,
     "password": password,
     "description": "Here is my description",
-    "location": "Brasil",
-    "posts": posts,
+    "location": "Brasil"
   });
 
   final response = await http

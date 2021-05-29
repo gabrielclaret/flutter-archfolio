@@ -21,6 +21,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             backgroundColor: Palette.cardTheme,
             title: Text(
               'notifications',
+              key: const Key('notificationsScreenText'),
               style: const TextStyle(
                 color: mainTheme,
                 fontSize: 20.0,

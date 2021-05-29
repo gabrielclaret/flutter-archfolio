@@ -20,7 +20,7 @@ class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     ExploreScreen(),
-    Scaffold(),
+    CreatePostScreen(),
     NotificationsScreen()
   ];
   final List<IconData> _icons = const [
@@ -51,6 +51,7 @@ class _NavScreenState extends State<NavScreen> {
         bottomNavigationBar: Container(
           color: Palette.cardTheme,
           child: CustomTabBar(
+            key: const Key('navScreenCustomBar'),
             icons: _icons,
             selectedIndex: _selectedIndex,
             onTap: (index) => setState(() => _selectedIndex = index),

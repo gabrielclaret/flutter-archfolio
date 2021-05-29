@@ -34,6 +34,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             backgroundColor: Palette.cardTheme,
             title: Text(
               'explore',
+              key: const Key('exploreScreenText'),
               style: const TextStyle(
                 color: mainTheme,
                 fontSize: 20.0,
@@ -45,6 +46,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             floating: true,
             actions: [
               IconButton(
+                key: const Key('searchButton'),
                 iconSize: 25,
                 icon: Icon(Icons.search),
                 onPressed: () {
