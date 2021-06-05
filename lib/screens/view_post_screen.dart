@@ -55,12 +55,13 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
     Completer<User> completer = Completer();
     final response = await http
         .get(Uri.http(Settings.apiUrl, 'archfolio/v1/users', {'id': userId}));
-
+    print(response.body);
     if (response.statusCode == 200) {
       completer.complete(User.fromJson(jsonDecode(response.body)));
       return completer.future;
     } else {
       print('Failed to load user');
+      return null;
     }
   }
 
