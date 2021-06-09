@@ -86,18 +86,18 @@ class PostCard extends StatelessWidget {
                                 size: 20,
                                 color: Palette.profileTheme,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 2.0),
-                                child: Text(
-                                  post.likes.toString(),
-                                  style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.normal,
-                                    letterSpacing: -0.8,
-                                  ),
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.only(left: 2.0),
+                              //   child: Text(
+                              //     post.likes.toString(),
+                              //     style: const TextStyle(
+                              //       color: Colors.grey,
+                              //       fontSize: 15.0,
+                              //       fontWeight: FontWeight.normal,
+                              //       letterSpacing: -0.8,
+                              //     ),
+                              //   ),
+                              // ),
                               SizedBox(
                                 width: 10,
                               ),

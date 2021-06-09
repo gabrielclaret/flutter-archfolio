@@ -96,26 +96,26 @@ class PostContainer extends StatelessWidget {
           //         ),
           //       )
           //     : SizedBox.shrink(),
-          showStats
-              ? Positioned(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0.0, 0.0, 4.0, 44.0),
-                    child: Align(
-                      alignment: FractionalOffset.bottomRight,
-                      child: Text(
-                        post.likes.toString(),
-                        style: const TextStyle(
-                          fontSize: 12.0,
-                          color: Palette.postTheme,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ),
-                )
-              : SizedBox.shrink(),
+          // showStats
+          //     ? Positioned(
+          //         child: Padding(
+          //           padding: const EdgeInsets.fromLTRB(0.0, 0.0, 4.0, 44.0),
+          //           child: Align(
+          //             alignment: FractionalOffset.bottomRight,
+          //             child: Text(
+          //               post.likes.toString(),
+          //               style: const TextStyle(
+          //                 fontSize: 12.0,
+          //                 color: Palette.postTheme,
+          //                 fontWeight: FontWeight.bold,
+          //               ),
+          //               maxLines: 1,
+          //               overflow: TextOverflow.ellipsis,
+          //             ),
+          //           ),
+          //         ),
+          //       )
+          //     : SizedBox.shrink(),
           showStats
               ? Positioned(
                   child: Padding(

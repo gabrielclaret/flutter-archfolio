@@ -308,7 +308,6 @@ final List<Post> posts = [
     description: 'Check out these cool puppers',
     thumbnail:
         'https://images.unsplash.com/photo-1610114190332-14d22f956ddd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=335&q=80',
-    likes: 800,
     views: 1202,
   ),
   Post(
@@ -318,7 +317,6 @@ final List<Post> posts = [
     description: 'Please enjoy this placeholder text',
     thumbnail:
         'https://images.unsplash.com/photo-1525286335722-c30c6b5df541?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=334&q=80',
-    likes: 821,
     views: 2214,
   ),
   Post(
@@ -328,7 +326,6 @@ final List<Post> posts = [
     description: 'This is a very good boi.',
     thumbnail:
         'https://images.unsplash.com/photo-1566869296469-609a90122355?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-    likes: 221,
     views: 551,
   ),
   Post(
@@ -338,7 +335,6 @@ final List<Post> posts = [
     description: 'Adventure 🏔',
     thumbnail:
         'https://images.unsplash.com/photo-1610114190332-14d22f956ddd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=335&q=80',
-    likes: 325,
     views: 1621,
   ),
   Post(
@@ -348,7 +344,6 @@ final List<Post> posts = [
     description: 'More placeholder text for the soul',
     thumbnail:
         'https://images.unsplash.com/photo-1458310336304-9b584acc9b58?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=267&q=80',
-    likes: 251,
     views: 625,
   ),
   Post(
@@ -358,7 +353,6 @@ final List<Post> posts = [
     description: 'A classic.',
     thumbnail:
         'https://images.unsplash.com/photo-1585940043926-92f50991d354?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=375&q=80',
-    likes: 735,
     views: 1526,
   ),
   Post(
@@ -368,7 +362,6 @@ final List<Post> posts = [
     description: 'This is a very good boi.',
     thumbnail:
         'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-    likes: 7256,
     views: 12652,
   ),
   Post(
@@ -378,7 +371,6 @@ final List<Post> posts = [
     description: 'Adventure 🏔',
     thumbnail:
         'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80',
-    likes: 129,
     views: 459,
   ),
   Post(
@@ -388,7 +380,6 @@ final List<Post> posts = [
     description: 'More placeholder text for the soul',
     thumbnail:
         'https://images.unsplash.com/photo-1461695008884-244cb4543d74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80',
-    likes: 320,
     views: 705,
   ),
   Post(
@@ -398,7 +389,6 @@ final List<Post> posts = [
     description: 'A classic.',
     thumbnail:
         'https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80',
-    likes: 1523,
     views: 3001,
   )
 ];

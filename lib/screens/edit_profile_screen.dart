@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_archfolio/config/settings.dart';
 import 'package:path/path.dart';
 import 'package:dio/dio.dart';
@@ -40,6 +41,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final picker = ImagePicker();
   User user;
   User new_user;
+  bool updated = false;
 
   @override
   void initState() {
@@ -81,6 +83,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context, user),
+        ),
         iconTheme: IconThemeData(
           color: Palette.iconTheme,
         ),
@@ -102,15 +108,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     _image == null
-                        ? IconButton(
-                            alignment: Alignment.center,
-                            iconSize: 90,
-                            icon: Icon(
-                              Icons.account_circle_rounded,
-                              color: Palette.mainLoginTheme,
-                            ),
-                            onPressed: getImage,
-                          )
+                        ? InkWell(
+                            onTap: getImage,
+                            child: CircleAvatar(
+                              radius: 63.0,
+                              backgroundColor: Palette.profileTheme,
+                              child: CircleAvatar(
+                                radius: 60.0,
+                                backgroundColor: Colors.grey[200],
+                                backgroundImage:
+                                    CachedNetworkImageProvider(user.imageUrl),
+                              ),
+                            ))
                         : InkWell(
                             onTap: getImage,
                             child: CircleAvatar(
@@ -208,7 +217,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         _password,
                         _image,
                       );
+                      updated = true;
+                    }
+                    if (updated) {
                       Navigator.pop(context, new_user);
+                    } else {
+                      Navigator.pop(context, user);
                     }
                   },
                 ),
@@ -224,10 +238,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 _sendUpdateUser(int userId, String name, String description, String email,
     String location, String password, File pfp) async {
   var body_text = new Map<String, dynamic>();
-  body_text['name'] = name;
-  body_text['description'] = description;
-  body_text['email'] = email;
-  body_text['location'] = location;
+
+  if (name != null) {
+    body_text['name'] = name;
+  }
+  if (description != null) {
+    body_text['description'] = description;
+  }
+  if (email != null) {
+    body_text['email'] = email;
+  }
+
+  if (location != null) {
+    body_text['location'] = location;
+  }
   if (password != null) {
     body_text['password'] = password;
   }
@@ -237,7 +261,7 @@ _sendUpdateUser(int userId, String name, String description, String email,
 
   var formData = FormData.fromMap({
     'text': json.encode(body_text),
-    'file': await MultipartFile.fromFile(pfp.path, filename: 'pfp$userId.txt')
+    'file': await MultipartFile.fromFile(pfp.path, filename: 'pfp$userId')
   });
 
   Response response = await dio.patch('/users/$userId', data: formData);

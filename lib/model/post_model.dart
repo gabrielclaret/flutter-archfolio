@@ -5,17 +5,36 @@ class Post {
   final int userId;
   final String title;
   final String description;
-  final String thumbnail;
-  final int likes;
   final int views;
+  final String thumbnail;
 
   const Post({
     @required this.id,
     @required this.userId,
     @required this.title,
     @required this.description,
-    @required this.thumbnail,
-    @required this.likes,
     @required this.views,
+    @required this.thumbnail
   });
+
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+      id: json['id'],
+      userId: json['user_id'],
+      title: json['title'],
+      description: json['description'],
+      views: json['views'],
+      thumbnail: json['description']
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> post = Map<String, dynamic>();
+    post["id"] = id;
+    post["userId"] = userId;
+    post["title"] = title;
+    post["description"] = description;
+    post["views"] = views;
+    return post;
+  }
 }

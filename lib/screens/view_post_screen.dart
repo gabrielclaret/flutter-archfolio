@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/model/post_model.dart';
 import 'package:flutter_archfolio/model/user_model.dart';
+import 'package:flutter_archfolio/screens/profile_screen.dart';
 import 'package:image_size_getter/image_size_getter.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_archfolio/config/palette.dart';
@@ -123,7 +124,15 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 8.0),
                             child: InkWell(
-                              onTap: () => print(user.name),
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProfileScreen(
+                                    user: user,
+                                    isEdit: false,
+                                  ),
+                                ),
+                              ),
                               child: Text(
                                 user.username,
                                 style: const TextStyle(

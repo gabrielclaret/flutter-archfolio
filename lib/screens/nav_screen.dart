@@ -19,7 +19,7 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
-    ExploreScreen(),
+    SearchScreen(),
     CreatePostScreen(),
     NotificationsScreen()
   ];

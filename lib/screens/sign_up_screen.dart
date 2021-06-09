@@ -1,7 +1,12 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/config/palette.dart';
 import 'package:flutter_archfolio/config/settings.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'screens.dart';
 
 import 'package:http/http.dart' as http;
@@ -10,18 +15,38 @@ import 'dart:convert';
 import 'package:flutter_archfolio/model/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   String _name = "";
   String _username = "";
   String _email = "";
   String _password = "";
   String _repeatPasswordField = "";
-  TextEditingController nameController;
-  TextEditingController usernameController;
-  TextEditingController emailController;
-  TextEditingController passwordController;
-  TextEditingController repeatPasswordController;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repeatPasswordController =
+      TextEditingController();
   User loggedUser;
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +66,8 @@ class SignUpScreen extends StatelessWidget {
         height: size.height,
         child: SingleChildScrollView(
           child: Align(
-            alignment: Alignment.center,
+            alignment: Alignment.topCenter,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'archfolio',
@@ -54,7 +78,53 @@ class SignUpScreen extends StatelessWidget {
                     letterSpacing: -0.9,
                   ),
                 ),
-                SizedBox(height: size.height * 0.1),
+                SizedBox(height: 20),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _image == null
+                        ? IconButton(
+                            alignment: Alignment.center,
+                            iconSize: 90,
+                            icon: Icon(
+                              Icons.account_circle_rounded,
+                              color: Palette.mainLoginTheme,
+                            ),
+                            onPressed: getImage,
+                          )
+                        : InkWell(
+                            onTap: getImage,
+                            child: CircleAvatar(
+                              radius: 63.0,
+                              backgroundColor: Palette.profileTheme,
+                              child: CircleAvatar(
+                                radius: 60.0,
+                                backgroundColor: Colors.grey[200],
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Container(
+                                    height: double.infinity,
+                                    width: double.infinity,
+                                    decoration: new BoxDecoration(
+                                      color: const Color(0xff7c94b6),
+                                      image: new DecorationImage(
+                                        image: FileImage(_image),
+                                        fit: BoxFit.cover,
+                                      ),
+                                      borderRadius: new BorderRadius.all(
+                                          const Radius.circular(80.0)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text("profile picture"),
+                    ),
+                  ],
+                ),
                 RoundedInputField(
                   key: const Key('nameFieldSUScreen'),
                   hintText: "name",
@@ -66,7 +136,7 @@ class SignUpScreen extends StatelessWidget {
                   controller: usernameController,
                 ),
                 RoundedInputField(
-                  key: const Key('emailFieldSUScreen'),
+                    key: const Key('emailFieldSUScreen'),
                     hintText: "email",
                     icon: Icons.email,
                     controller: emailController),
@@ -111,7 +181,7 @@ class SignUpScreen extends StatelessWidget {
                     } else {
                       print(_name);
                       loggedUser =
-                          await createUser(_name, _email, _username, _password);
+                          await createUser(_name, _email, _username, _password, _image);
                       if (loggedUser != null) {
                         Navigator.pop(context);
                         Navigator.of(context).pushReplacement(
@@ -134,28 +204,49 @@ class SignUpScreen extends StatelessWidget {
   }
 }
 
-createUser(String name, email, username, password) async {
+createUser(String name, String email, String username, String password, File pfp) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var body = new Map<String, dynamic>();
   List posts = [];
-  body['text'] = jsonEncode({
-    "name": name,
-    "email": email,
-    "username": username,
-    "password": password,
-    "description": "Here is my description",
-    "location": "Brasil"
+  var body_text = new Map<String, dynamic>();
+
+  if (name != null) {
+    body_text['name'] = name;
+  }
+  if (email != null) {
+    body_text['email'] = email;
+  }
+  if (username != null) {
+    body_text['username'] = username;
+  }
+  if (password != null) {
+    body_text['password'] = password;
+  }
+  body_text['location'] = 'Brasil';
+
+  body_text['description'] = 'A cool description.';
+
+  var dio = Dio();
+  dio.options.baseUrl = Uri.http(Settings.apiUrl, 'archfolio/v1').toString();
+
+  var formData = FormData.fromMap({
+    'text': json.encode(body_text),
+    'file': await MultipartFile.fromFile(pfp.path)
   });
 
-  final response = await http
-      .post(Uri.http(Settings.apiUrl, '/archfolio/v1/users'), body: body);
+  Response response = await dio.post('/users', data: formData);
+  print(jsonDecode(response.toString()));
+  return User.fromJson(jsonDecode(response.toString()));
+  // final response = await http
+  //     .post(Uri.http(Settings.apiUrl, '/archfolio/v1/users'), body: body);
 
-  if (response.statusCode == 200) {
-    await prefs.setString("user", response.body);
+  // if (response.statusCode == 200) {
+  //   await prefs.setString("user", response.body);
 
-    return User.fromJson(jsonDecode(response.body));
-  } else {
-    print("n ta bao");
-    return null;
-  }
+  //   print(jsonDecode(response.body));
+  //   return User.fromJson(jsonDecode(response.body));
+  // } else {
+  //   print("n ta bao");
+  //   return null;
+  // }
 }

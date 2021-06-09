@@ -13,7 +13,8 @@ import 'dart:convert';
 
 class ProfileScreen extends StatefulWidget {
   final User user;
-  const ProfileScreen({Key key, this.user}) : super(key: key);
+  final bool isEdit;
+  const ProfileScreen({Key key, this.user, this.isEdit = true}) : super(key: key);
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -23,9 +24,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   static const Color mainTheme = Palette.mainColorTheme;
   bool _isTimeline = false;
   User loggedUser;
+  bool edit = true;
 
   @override
   void initState() {
+    edit = widget.isEdit;
     loggedUser = widget.user;
     super.initState();
   }
@@ -39,6 +42,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
+              iconTheme: IconThemeData(
+                color: Palette.iconTheme,
+              ),
+              shadowColor: Colors.transparent,
               brightness: Brightness.light,
               backgroundColor: Palette.cardTheme,
               title: Text(
@@ -54,16 +61,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
               centerTitle: false,
               floating: true,
               actions: [
-                Container(
-                  margin: const EdgeInsets.all(6.0),
-                  child: IconButton(
-                    key: const Key('editProfileButton'),
-                    icon: Icon(Icons.edit),
-                    iconSize: 25.0,
-                    color: mainTheme,
-                    onPressed: () => _navigateAndDisplaySelection(context),
-                  ),
-                ),
+                edit
+                    ? Container(
+                        margin: const EdgeInsets.all(6.0),
+                        child: IconButton(
+                          key: const Key('editProfileButton'),
+                          icon: Icon(Icons.edit),
+                          iconSize: 25.0,
+                          color: mainTheme,
+                          onPressed: () =>
+                              _navigateAndDisplaySelection(context),
+                        ),
+                      )
+                    : Container(),
               ],
             ),
             SliverToBoxAdapter(
@@ -157,7 +167,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _navigateAndDisplaySelection(BuildContext context) async {
     final new_user = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => EditProfileScreen(loggedUser: loggedUser,)),
+      MaterialPageRoute(
+          builder: (context) => EditProfileScreen(
+                loggedUser: loggedUser,
+              )),
     );
     setState(() {
       loggedUser = new_user;

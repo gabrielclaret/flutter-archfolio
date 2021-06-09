@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/data/data.dart';
 import 'package:flutter_archfolio/config/palette.dart';
+import 'package:flutter_archfolio/screens/view_post_screen.dart';
 import 'screens.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 import 'package:flutter_archfolio/model/models.dart';
@@ -122,7 +123,15 @@ class __SearchUsersState extends State<_SearchUsers> {
         itemBuilder: (BuildContext context, int index) {
           final User user = widget.usersList[index];
           return GestureDetector(
-            onTap: () => print(user.name),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfileScreen(
+                  user: user,
+                  isEdit: false,
+                ),
+              ),
+            ),
             child: ProfileCard(
               user: user,
               isMiniature: true,
@@ -152,7 +161,12 @@ class __SearchPostsState extends State<_SearchPosts> {
         itemBuilder: (BuildContext context, int index) {
           final Post post = widget.postList[index];
           return GestureDetector(
-              onTap: () => print(post.title),
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ViewPostScreen(post: post),
+                    ),
+                  ),
               child: PostCard(
                 post: post,
                 isMiniature: true,
