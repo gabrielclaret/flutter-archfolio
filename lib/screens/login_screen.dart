@@ -106,7 +106,7 @@ class _LoginScreenMobile extends StatelessWidget {
                   _username = usernameController.text;
                   _password = passwordController.text;
 
-                  loggedUser = await fetchUser(_username, _password);
+                  loggedUser = await fetchUser(_username, _password, false);
                   if (loggedUser != null) {
                     print("Log In successfull");
                     Navigator.pop(context);
@@ -205,7 +205,7 @@ class _LoginScreenDesktop extends StatelessWidget {
                               _password = passwordController.text;
 
                               loggedUser =
-                                  await fetchUser(_username, _password);
+                                  await fetchUser(_username, _password, true);
                               if (loggedUser != null) {
                                 print("Log In successfull");
                                 Navigator.pop(context);
@@ -231,7 +231,7 @@ class _LoginScreenDesktop extends StatelessWidget {
   }
 }
 
-fetchUser(String username, password) async {
+fetchUser(String username, password, bool isWeb) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   Map<String, dynamic> request = {
     "identification": username,
@@ -241,9 +241,14 @@ fetchUser(String username, password) async {
       await http.get(Uri.http(Settings.apiUrl, '/archfolio/v1/users', request));
 
   if (response.statusCode == 200) {
-    await prefs.setString("user", response.body);
-
-    return User.fromJson(jsonDecode(response.body));
+    if (isWeb) {
+      print('am here');
+      var response_user = jsonDecode(response.body);
+      response_user['pfp_url'] = "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80";
+      print(response_user);
+      return User.fromJson(response_user);
+    } else
+      return User.fromJson(jsonDecode(response.body));
   } else {
     print("Couldn't login");
     return null;

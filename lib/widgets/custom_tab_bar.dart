@@ -45,7 +45,7 @@ class CustomTabBar extends StatelessWidget {
                     color: i == selectedIndex
                         ? mainTheme
                         : Palette.notSelectedTheme,
-                    size: i == 2 ? 35.0 : 30.0, //create icon
+                    size: i == 2 ? 33.0 : 28.0, //create icon
                   ),
                 ),
               ))

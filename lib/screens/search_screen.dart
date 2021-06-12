@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/data/data.dart';
 import 'package:flutter_archfolio/config/palette.dart';
 import 'package:flutter_archfolio/screens/view_post_screen.dart';
+import 'package:flutter_archfolio/widgets/responsive.dart';
 import 'screens.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 import 'package:flutter_archfolio/model/models.dart';
@@ -14,6 +15,133 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Responsive(
+      desktop: _SearchScreenDesktop(),
+      mobile: _SearchScreenMobile(),
+    );
+  }
+}
+
+// deixar essa parte mais agnóstica
+
+class _SearchScreenDesktop extends StatefulWidget {
+  const _SearchScreenDesktop({Key key}) : super(key: key);
+
+  @override
+  __SearchScreenDesktopState createState() => __SearchScreenDesktopState();
+}
+
+class __SearchScreenDesktopState extends State<_SearchScreenDesktop> {
+  List<User> usersForDisplay;
+  List<Post> postsForDisplay;
+
+  static const Color mainTheme = Palette.mainColorTheme;
+
+  @override
+  void initState() {
+    usersForDisplay = recentUsers;
+    postsForDisplay = recentPosts;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    
+    Size size = MediaQuery.of(context).size;
+    return Center(
+      child: Card(
+        child: Container(
+          width: size.width * 0.55,
+          height: double.infinity,
+          child: DefaultTabController(
+            length: 2,
+            child: Scaffold(
+              appBar: AppBar(
+                actions: [],
+                iconTheme: IconThemeData(
+                  color: mainTheme,
+                ),
+                backgroundColor: Palette.cardTheme,
+                title: Container(
+                  height: 40,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: TextField(
+                      key: const Key('searchField'),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(15, 20, 0,
+                            0), // top padding is half the container height
+                        hintText: 'search',
+                        suffixIcon: Icon(
+                          Icons.search,
+                          color: mainTheme,
+                          size: 25,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: mainTheme)),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: mainTheme)),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: mainTheme)),
+                      ),
+                      onChanged: (text) {
+                        text = text.toLowerCase();
+                        // try to make this send to backend and return
+                        setState(() {
+                          usersForDisplay = users.where((user) {
+                            var userName = user.name.toLowerCase();
+                            return userName.contains(text);
+                          }).toList();
+                          postsForDisplay = posts.where((post) {
+                            var postTitle = post.title.toLowerCase();
+                            return postTitle.contains(text);
+                          }).toList();
+                          // adicionar postTags, e concatenar os resultados na lista postForDisplay
+                        });
+                      },
+                      cursorColor: mainTheme,
+                      style: TextStyle(color: Palette.iconTheme),
+                    ),
+                  ),
+                ),
+                bottom: TabBar(
+                  labelColor: mainTheme,
+                  unselectedLabelColor: Colors.grey[600],
+                  indicatorColor: mainTheme,
+                  tabs: [
+                    Tab(text: 'user'),
+                    Tab(text: 'posts'),
+                  ],
+                ),
+              ),
+              body: TabBarView(
+                children: [
+                  _SearchUsers(
+                    usersList: usersForDisplay,
+                  ),
+                  _SearchPosts(
+                    postList: postsForDisplay,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SearchScreenMobile extends StatefulWidget {
+  const _SearchScreenMobile({Key key}) : super(key: key);
+
+  @override
+  __SearchScreenMobileState createState() => __SearchScreenMobileState();
+}
+
+class __SearchScreenMobileState extends State<_SearchScreenMobile> {
   List<User> usersForDisplay;
   List<Post> postsForDisplay;
 
@@ -103,8 +231,6 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 }
-
-// deixar essa parte mais agnóstica
 
 class _SearchUsers extends StatefulWidget {
   final List<User> usersList;

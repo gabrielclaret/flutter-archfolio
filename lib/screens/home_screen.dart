@@ -407,17 +407,20 @@ class __HomeScreenDesktopState extends State<_HomeScreenDesktop> {
                       //     ),
                       //   ),
                       // ),
-                      SliverStaggeredGrid.countBuilder(
-                        crossAxisCount: 8,
-                        mainAxisSpacing: 3.0,
-                        crossAxisSpacing: 3.0,
-                        itemCount: posts.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          final Post post = posts[index];
-                          return PostContainer(post: post, showStats: false);
-                        },
-                        staggeredTileBuilder: (int index) =>
-                            new StaggeredTile.count(2, index.isEven ? 3 : 2),
+                      SliverPadding(
+                        padding: EdgeInsets.all(5),
+                        sliver: SliverStaggeredGrid.countBuilder(
+                          crossAxisCount: 8,
+                          mainAxisSpacing: 3.0,
+                          crossAxisSpacing: 3.0,
+                          itemCount: posts.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final Post post = posts[index];
+                            return PostContainer(post: post, showStats: false);
+                          },
+                          staggeredTileBuilder: (int index) =>
+                              new StaggeredTile.count(2, index.isEven ? 3 : 2),
+                        ),
                       ),
                     ],
                   ),
