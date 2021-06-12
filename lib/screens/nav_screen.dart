@@ -19,9 +19,7 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
-    SearchScreen(),
-    CreatePostScreen(),
-    NotificationsScreen()
+    SearchScreen()
   ];
   final List<IconData> _icons = const [
     Icons.home_outlined,
@@ -35,6 +33,8 @@ class _NavScreenState extends State<NavScreen> {
 
   @override
   void initState() {
+    _screens.add(CreatePostScreen(user: widget.user));
+    _screens.add(NotificationsScreen());
     _screens.add(ProfileScreen(user: widget.user));
     super.initState();
   }

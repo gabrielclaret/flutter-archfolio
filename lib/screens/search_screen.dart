@@ -61,6 +61,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 onChanged: (text) {
                   text = text.toLowerCase();
+                  // try to make this send to backend and return
                   setState(() {
                     usersForDisplay = users.where((user) {
                       var userName = user.name.toLowerCase();

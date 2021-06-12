@@ -1,22 +1,31 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/services.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/config/palette.dart';
+import 'package:flutter_archfolio/config/settings.dart';
+import 'package:flutter_archfolio/model/user_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreatePostScreen extends StatefulWidget {
+  final User user;
+  const CreatePostScreen({Key key, this.user}) : super(key: key);
   @override
   _CreatePostScreenState createState() => _CreatePostScreenState();
 }
 
 class _CreatePostScreenState extends State<CreatePostScreen> {
   File _image;
+  File _thumbnail;
   final picker = ImagePicker();
+  final thumbPicker = ImagePicker();
 
   TextEditingController _titleController;
   TextEditingController _descriptionController;
   final _formKey = GlobalKey<FormState>();
-  static List<String> contentList = [null];
+  static List<dynamic> contentList = ['text'];
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -24,6 +33,18 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  Future getThumb() async {
+    final pickedThumb = await thumbPicker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedThumb != null) {
+        _thumbnail = File(pickedThumb.path);
       } else {
         print('No image selected.');
       }
@@ -80,6 +101,9 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 height: 10,
               ),
               TextFormField(
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(20),
+                ],
                 style: TextStyle(fontWeight: FontWeight.bold),
                 cursorColor: Palette.mainColorTheme,
                 controller: _titleController,
@@ -98,6 +122,9 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 height: 20,
               ),
               TextFormField(
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(150),
+                ],
                 cursorColor: Palette.mainColorTheme,
                 decoration: InputDecoration(
                   hoverColor: Palette.mainColorTheme,
@@ -115,18 +142,74 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 height: 20,
               ),
               Text(
+                'Thumbnail',
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+              ),
+              _thumbnail == null
+                  ? Container(
+                      child: Center(
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Palette.mainColorTheme)),
+                          onPressed: getThumb,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Add Thumbnail',
+                              style: const TextStyle(
+                                color: Palette.mainTextColorTheme,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : InkWell(
+                      onTap: getThumb,
+                      child: Center(
+                        child: CircleAvatar(
+                          radius: 80.0,
+                          backgroundColor: Colors.grey[200],
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0.0),
+                            child: Container(
+                              height: double.infinity,
+                              width: double.infinity,
+                              decoration: new BoxDecoration(
+                                color: const Color(0xff7c94b6),
+                                image: new DecorationImage(
+                                  image: FileImage(_thumbnail),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: new BorderRadius.all(
+                                    const Radius.circular(0.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+              Text(
                 'Add content',
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
               ),
-              ..._getcontent(),
+              ..._getContent(),
               Container(
                 child: Center(
                   child: ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                             Palette.mainColorTheme)),
-                    onPressed: () {
-                      print('hey');
+                    onPressed: () async {
+                      await _createPost(
+                          contentList.reversed.toList(),
+                          widget.user.id,
+                          _titleController,
+                          _descriptionController,
+                          _thumbnail);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -149,35 +232,46 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
     );
   }
 
-  // i can try and make this with text + image, just try to make the contenttextfields but for images.
-  List<Widget> _getcontent() {
-    List<Widget> contentTextFields = [];
+  List<Widget> _getContent() {
+    List<Widget> contentFields = [];
+    List<Widget> newContentFields = [];
+
     for (int i = 0; i < contentList.length; i++) {
-      contentTextFields.add(Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Row(
-          children: [
-            Expanded(child: ContentTextFields(i)),
-            SizedBox(
-              width: 10,
-            ),
-            _addRemoveButton(i == contentList.length - 1, i),
-          ],
-        ),
-      ));
+      if (contentList[i].runtimeType.toString() == 'String') {
+        contentFields.add(Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Row(
+            children: [
+              Expanded(child: ContentTextFields(i)),
+              SizedBox(
+                width: 10,
+              ),
+              _addRemoveButton(i == 0, i),
+            ],
+          ),
+        ));
+      } else {
+        contentFields.add(Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Row(
+            children: [
+              Expanded(child: Text('hello its me mario')),
+              SizedBox(
+                width: 10,
+              ),
+              _addRemoveButton(i == 0, i),
+            ],
+          ),
+        ));
+      }
     }
-    return contentTextFields;
+    newContentFields = contentFields.reversed.toList();
+    return newContentFields;
   }
 
   Widget _addRemoveButton(bool add, int index) {
     return InkWell(
-      onTap: () {
-        if (add) {
-          contentList.insert(0, null);
-        } else
-          contentList.removeAt(index);
-        setState(() {});
-      },
+      onTap: () {},
       child: add
           ? PopupMenuButton(
               key: const Key('addContentButton'),
@@ -193,13 +287,15 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                   color: Colors.white,
                 ),
               ),
-              onSelected: (value) {
+              onSelected: (value) async {
+                print(value);
                 if (value) {
-                  contentList.insert(0, null);
+                  contentList.insert(index, 'text');
                   setState(() {});
-                  print('text');
-                } else
-                  getImage();
+                } else {
+                  await getImage();
+                  contentList.insert(index, _image);
+                }
               },
               itemBuilder: (context) => [
                 PopupMenuItem(
@@ -298,4 +394,61 @@ class _ContentTextFieldsState extends State<ContentTextFields> {
       },
     );
   }
+}
+
+_createPost(
+    List<dynamic> contentList,
+    int authorId,
+    TextEditingController titleController,
+    TextEditingController descriptionController,
+    File thumbnail) async {
+  var dio = Dio();
+  dio.options.baseUrl = Uri.http(Settings.apiUrl, 'archfolio/v1').toString();
+
+  var body_text = new Map<String, dynamic>();
+  body_text['author'] = authorId;
+  body_text['title'] = titleController.text;
+  body_text['description'] = descriptionController.text;
+  body_text['tags'] = ['cool', 'notags'];
+  print(body_text);
+
+  var formData = new FormData.fromMap({
+    'text': json.encode(body_text),
+    'file': await MultipartFile.fromFile(thumbnail.path, filename: 'thumbnail')
+  });
+
+  Response responsePost = await dio.post('/posts', data: formData);
+  int postId = responsePost.data['id'];
+  int dispositionOrder = 0;
+  for (var content in contentList) {
+    if (content.runtimeType.toString() == 'String') {
+      var body_text = new Map<String, dynamic>();
+      body_text['content'] = content;
+      body_text['disposition_order'] = dispositionOrder;
+      var formData = new FormData.fromMap({
+        'text': json.encode(body_text),
+      });
+      Response response =
+          await dio.post('/posts/$postId/metadatas', data: formData);
+    } else {
+      var body_text = new Map<String, dynamic>();
+      body_text['disposition_order'] = dispositionOrder;
+      var formData = new FormData.fromMap({
+        'text': json.encode(body_text),
+        'file': await MultipartFile.fromFile(content.path,
+            filename: 'metadata$dispositionOrder')
+      });
+      Response response =
+          await dio.post('/posts/$postId/metadatas', data: formData);
+    }
+    dispositionOrder += 1;
+  }
+
+  // var formData = FormData.fromMap({
+  //   'text': json.encode(body_text),
+  //   'file': await MultipartFile.fromFile(pfp.path, filename: 'pfp$userId')
+  // });
+
+  // Response response = await dio.patch('/users/$userId', data: formData);
+  // return User.fromJson(jsonDecode(response.toString()));
 }

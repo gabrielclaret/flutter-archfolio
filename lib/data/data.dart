@@ -321,7 +321,7 @@ final List<Post> posts = [
   ),
   Post(
     id: 1,
-    userId: users[4].id,
+    userId: currentUser.id,
     title: 'Building',
     description: 'This is a very good boi.',
     thumbnail:

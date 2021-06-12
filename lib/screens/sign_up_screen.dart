@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_archfolio/config/palette.dart';
 import 'package:flutter_archfolio/config/settings.dart';
+import 'package:flutter_archfolio/widgets/responsive.dart';
 import 'package:flutter_archfolio/widgets/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'screens.dart';
@@ -14,6 +15,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_archfolio/model/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker_for_web/image_picker_for_web.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -26,6 +28,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String _email = "";
   String _password = "";
   String _repeatPasswordField = "";
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repeatPasswordController =
+      TextEditingController();
+
+  User loggedUser;
+  File _image;
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    usernameController.dispose();
+    emailController.dispose();
+    repeatPasswordController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Palette.iconTheme,
+          ),
+          shadowColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
+        ),
+        backgroundColor: Palette.scaffold,
+        body: Responsive(
+          mobile: _SignUpScreenMobile(),
+          desktop: _SignUpScreenDesktop(),
+        ));
+  }
+}
+
+class _SignUpScreenMobile extends StatefulWidget {
+  const _SignUpScreenMobile({Key key}) : super(key: key);
+
+  @override
+  __SignUpScreenMobileState createState() => __SignUpScreenMobileState();
+}
+
+class __SignUpScreenMobileState extends State<_SignUpScreenMobile> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -50,152 +98,398 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String _name = "";
+    String _username = "";
+    String _email = "";
+    String _password = "";
+    String _repeatPasswordField = "";
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Palette.iconTheme,
-        ),
-        shadowColor: Colors.transparent,
-        backgroundColor: Palette.backgroundTheme,
-      ),
-      backgroundColor: Palette.backgroundTheme,
-      body: Container(
-        alignment: Alignment.center,
-        width: double.infinity,
-        height: size.height,
-        child: SingleChildScrollView(
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: [
-                Text(
-                  'archfolio',
-                  style: const TextStyle(
-                    color: Palette.mainLoginTheme,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: -0.9,
-                  ),
+    return Container(
+      alignment: Alignment.center,
+      width: double.infinity,
+      height: size.height,
+      child: SingleChildScrollView(
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: Column(
+            children: [
+              Text(
+                'archfolio',
+                style: const TextStyle(
+                  color: Palette.mainLoginTheme,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: -0.9,
                 ),
-                SizedBox(height: 20),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _image == null
-                        ? IconButton(
-                            alignment: Alignment.center,
-                            iconSize: 90,
-                            icon: Icon(
-                              Icons.account_circle_rounded,
-                              color: Palette.mainLoginTheme,
-                            ),
-                            onPressed: getImage,
-                          )
-                        : InkWell(
-                            onTap: getImage,
+              ),
+              SizedBox(height: 20),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _image == null
+                      ? IconButton(
+                          alignment: Alignment.center,
+                          iconSize: 90,
+                          icon: Icon(
+                            Icons.account_circle_rounded,
+                            color: Palette.mainLoginTheme,
+                          ),
+                          onPressed: getImage,
+                        )
+                      : InkWell(
+                          onTap: getImage,
+                          child: CircleAvatar(
+                            radius: 63.0,
+                            backgroundColor: Palette.profileTheme,
                             child: CircleAvatar(
-                              radius: 63.0,
-                              backgroundColor: Palette.profileTheme,
-                              child: CircleAvatar(
-                                radius: 60.0,
-                                backgroundColor: Colors.grey[200],
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  child: Container(
-                                    height: double.infinity,
-                                    width: double.infinity,
-                                    decoration: new BoxDecoration(
-                                      color: const Color(0xff7c94b6),
-                                      image: new DecorationImage(
-                                        image: FileImage(_image),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      borderRadius: new BorderRadius.all(
-                                          const Radius.circular(80.0)),
+                              radius: 60.0,
+                              backgroundColor: Colors.grey[200],
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Container(
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                  decoration: new BoxDecoration(
+                                    color: const Color(0xff7c94b6),
+                                    image: new DecorationImage(
+                                      image: FileImage(_image),
+                                      fit: BoxFit.cover,
                                     ),
+                                    borderRadius: new BorderRadius.all(
+                                        const Radius.circular(80.0)),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text("profile picture"),
-                    ),
-                  ],
-                ),
-                RoundedInputField(
-                  key: const Key('nameFieldSUScreen'),
-                  hintText: "name",
-                  controller: nameController,
-                ),
-                RoundedInputField(
-                  key: const Key('usernameFieldSUScreen'),
-                  hintText: "username",
-                  controller: usernameController,
-                ),
-                RoundedInputField(
-                    key: const Key('emailFieldSUScreen'),
-                    hintText: "email",
-                    icon: Icons.email,
-                    controller: emailController),
-                RoundedPasswordField(
-                  key: const Key('passwordFieldSUScreen'),
-                  hintText: "password",
-                  passwordController: passwordController,
-                ),
-                RoundedPasswordField(
-                  key: const Key('rpasswordFieldSUScreen'),
-                  hintText: "repeat password",
-                  passwordController: repeatPasswordController,
-                  onChanged: (text) {
-                    if (text != _password) {
-                      print("password is not the same");
-                    } else {
-                      print("password is the same");
-                    }
-                  },
-                ),
-                RoundedButton(
-                  key: const Key('signUpButtonSUScreen'),
-                  text: "SIGN UP",
-                  press: () async {
-                    _name = nameController.text;
-                    _username = usernameController.text;
-                    _email = emailController.text;
-                    _password = passwordController.text;
-                    _repeatPasswordField = repeatPasswordController.text;
-                    print("_name: $_name");
-                    print("_username: $_username");
-                    print("_email: $_email");
-                    print("_password: $_password");
-                    print("_repeatPasswordField $_repeatPasswordField");
-                    if (_password != _repeatPasswordField) {
-                      print("password and repeat password are not the same");
-                    } else if (_username.isEmpty |
-                        _name.isEmpty |
-                        _email.isEmpty |
-                        _password.isEmpty) {
-                      print("field is empty");
-                    } else {
-                      print(_name);
-                      loggedUser =
-                          await createUser(_name, _email, _username, _password, _image);
-                      if (loggedUser != null) {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => NavScreen(
-                              user: loggedUser,
-                            ),
+                        ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text("profile picture"),
+                  ),
+                ],
+              ),
+              RoundedInputField(
+                key: const Key('nameFieldSUScreen'),
+                hintText: "name",
+                controller: nameController,
+              ),
+              RoundedInputField(
+                key: const Key('usernameFieldSUScreen'),
+                hintText: "username",
+                controller: usernameController,
+              ),
+              RoundedInputField(
+                  key: const Key('emailFieldSUScreen'),
+                  hintText: "email",
+                  icon: Icons.email,
+                  controller: emailController),
+              RoundedPasswordField(
+                key: const Key('passwordFieldSUScreen'),
+                hintText: "password",
+                passwordController: passwordController,
+              ),
+              RoundedPasswordField(
+                key: const Key('rpasswordFieldSUScreen'),
+                hintText: "repeat password",
+                passwordController: repeatPasswordController,
+                onChanged: (text) {
+                  if (text != _password) {
+                    print("password is not the same");
+                  } else {
+                    print("password is the same");
+                  }
+                },
+              ),
+              RoundedButton(
+                key: const Key('signUpButtonSUScreen'),
+                text: "SIGN UP",
+                press: () async {
+                  _name = nameController.text;
+                  _username = usernameController.text;
+                  _email = emailController.text;
+                  _password = passwordController.text;
+                  _repeatPasswordField = repeatPasswordController.text;
+                  print("_name: $_name");
+                  print("_username: $_username");
+                  print("_email: $_email");
+                  print("_password: $_password");
+                  print("_repeatPasswordField $_repeatPasswordField");
+                  if (_password != _repeatPasswordField) {
+                    print("password and repeat password are not the same");
+                  } else if (_username.isEmpty |
+                      _name.isEmpty |
+                      _email.isEmpty |
+                      _password.isEmpty) {
+                    print("field is empty");
+                  } else {
+                    print(_name);
+                    loggedUser = await createUser(
+                        _name, _email, _username, _password, _image);
+                    if (loggedUser != null) {
+                      Navigator.pop(context);
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => NavScreen(
+                            user: loggedUser,
                           ),
-                        );
-                      }
+                        ),
+                      );
                     }
-                  },
-                ),
-              ],
+                  }
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SignUpScreenDesktop extends StatefulWidget {
+  const _SignUpScreenDesktop({Key key}) : super(key: key);
+
+  @override
+  __SignUpScreenDesktopState createState() => __SignUpScreenDesktopState();
+}
+
+class __SignUpScreenDesktopState extends State<_SignUpScreenDesktop> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repeatPasswordController =
+      TextEditingController();
+  User loggedUser;
+  var _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = pickedFile.path;
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    String _name = "";
+    String _username = "";
+    String _email = "";
+    String _password = "";
+    String _repeatPasswordField = "";
+    Size size = MediaQuery.of(context).size;
+    return Center(
+      child: Card(
+        child: Container(
+          alignment: Alignment.center,
+          width: size.width * 0.65,
+          height: size.height * 0.75,
+          child: SingleChildScrollView(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            "https://miro.medium.com/max/1920/1*YvhJBGJK5uxfvr0Z4dUVHw.jpeg",
+                        width: size.width * 0.65,
+                        height: size.height * 0.75,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'archfolio',
+                          style: const TextStyle(
+                            color: Palette.mainLoginTheme,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: -0.9,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _image == null
+                                ? IconButton(
+                                    alignment: Alignment.center,
+                                    iconSize: 90,
+                                    icon: Icon(
+                                      Icons.account_circle_rounded,
+                                      color: Palette.mainLoginTheme,
+                                    ),
+                                    onPressed: getImage,
+                                  )
+                                : InkWell(
+                                    onTap: getImage,
+                                    child: CircleAvatar(
+                                      radius: 63.0,
+                                      backgroundColor: Palette.profileTheme,
+                                      child: CircleAvatar(
+                                        radius: 60.0,
+                                        backgroundColor: Colors.grey[200],
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          child: Container(
+                                            height: double.infinity,
+                                            width: double.infinity,
+                                            decoration: new BoxDecoration(
+                                              color: const Color(0xff7c94b6),
+                                              image: new DecorationImage(
+                                                image: NetworkImage(_image),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: new BorderRadius
+                                                      .all(
+                                                  const Radius.circular(80.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text("profile picture"),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: size.width * 0.01,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: RoundedInputField(
+                                  key: const Key('nameFieldSUScreen'),
+                                  hintText: "name",
+                                  controller: nameController,
+                                ),
+                              ),
+                              SizedBox(
+                                width: size.width * 0.01,
+                              ),
+                              Expanded(
+                                child: RoundedInputField(
+                                  key: const Key('usernameFieldSUScreen'),
+                                  hintText: "username",
+                                  controller: usernameController,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: size.width * 0.01,
+                          ),
+                          child: RoundedInputField(
+                              key: const Key('emailFieldSUScreen'),
+                              hintText: "email",
+                              icon: Icons.email,
+                              controller: emailController),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: size.width * 0.01,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: RoundedPasswordField(
+                                  key: const Key('passwordFieldSUScreen'),
+                                  hintText: "password",
+                                  passwordController: passwordController,
+                                ),
+                              ),
+                              SizedBox(
+                                width: size.width * 0.01,
+                              ),
+                              Expanded(
+                                child: RoundedPasswordField(
+                                  key: const Key('rpasswordFieldSUScreen'),
+                                  hintText: "repeat password",
+                                  passwordController: repeatPasswordController,
+                                  onChanged: (text) {
+                                    if (text != _password) {
+                                      print("password is not the same");
+                                    } else {
+                                      print("password is the same");
+                                    }
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: size.width * 0.01,
+                          ),
+                          child: RoundedButton(
+                            key: const Key('signUpButtonSUScreen'),
+                            text: "SIGN UP",
+                            press: () async {
+                              print(_image);
+                              _name = nameController.text;
+                              _username = usernameController.text;
+                              _email = emailController.text;
+                              _password = passwordController.text;
+                              _repeatPasswordField =
+                                  repeatPasswordController.text;
+                              print("_name: $_name");
+                              print("_username: $_username");
+                              print("_email: $_email");
+                              print("_password: $_password");
+                              print(
+                                  "_repeatPasswordField $_repeatPasswordField");
+                              if (_password != _repeatPasswordField) {
+                                print(
+                                    "password and repeat password are not the same");
+                              } else if (_username.isEmpty |
+                                  _name.isEmpty |
+                                  _email.isEmpty |
+                                  _password.isEmpty) {
+                                print("field is empty");
+                              } else {
+                                print(_name);
+                                loggedUser = await createUser(_name, _email,
+                                    _username, _password, _image);
+                                if (loggedUser != null) {
+                                  Navigator.pop(context);
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => NavScreen(
+                                        user: loggedUser,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -204,7 +498,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-createUser(String name, String email, String username, String password, File pfp) async {
+createUser(String name, String email, String username, String password,
+    File pfp) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var body = new Map<String, dynamic>();
   List posts = [];

@@ -24,7 +24,7 @@ class Post {
       title: json['title'],
       description: json['description'],
       views: json['views'],
-      thumbnail: json['description']
+      thumbnail: json['pfp_url']
     );
   }
 
