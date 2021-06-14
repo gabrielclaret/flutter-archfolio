@@ -15,7 +15,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_archfolio/model/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:image_picker_for_web/image_picker_for_web.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

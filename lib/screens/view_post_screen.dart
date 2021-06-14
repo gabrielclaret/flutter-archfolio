@@ -56,9 +56,8 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
     Completer<User> completer = Completer();
     final response = await http
         .get(Uri.http(Settings.apiUrl, 'archfolio/v1/users', {'id': userId}));
-    print(response.body);
     if (response.statusCode == 200) {
-      completer.complete(User.fromJson(jsonDecode(response.body)));
+      completer.complete(User.fromJson(jsonDecode(response.body)[0]));
       return completer.future;
     } else {
       print('Failed to load user');
@@ -111,8 +110,8 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                                   post.description,
                                   style: const TextStyle(
                                     color: Colors.black,
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.normal,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
                                     letterSpacing: -0.8,
                                   ),
                                   overflow: TextOverflow.visible,
@@ -136,9 +135,9 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                               child: Text(
                                 user.username,
                                 style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.normal,
+                                  color: Colors.blue,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
                                   letterSpacing: -0.8,
                                 ),
                               ),

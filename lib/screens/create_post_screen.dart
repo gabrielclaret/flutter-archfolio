@@ -210,6 +210,15 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                           _titleController,
                           _descriptionController,
                           _thumbnail);
+                      // print('im here1');
+                      // setState(() {
+                      //   _formKey.currentState.reset();
+                      //   _titleController.clear();
+                      //   _descriptionController.clear();
+                      //   _thumbnail = null;
+                      //   contentList.clear();
+                      //   print("im here2");
+                      // });
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -255,7 +264,30 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Row(
             children: [
-              Expanded(child: Text('hello its me mario')),
+              Expanded(
+                child: Center(
+                  child: CircleAvatar(
+                    radius: 80.0,
+                    backgroundColor: Colors.grey[200],
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: Container(
+                        height: double.infinity,
+                        width: double.infinity,
+                        decoration: new BoxDecoration(
+                          color: const Color(0xff7c94b6),
+                          image: new DecorationImage(
+                            image: FileImage(contentList[i]),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius:
+                              new BorderRadius.all(const Radius.circular(0.0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(
                 width: 10,
               ),

@@ -62,6 +62,7 @@ class __HomeScreenMobileState extends State<_HomeScreenMobile> {
         Post myPost = Post.fromJson(post);
         posts.add(myPost);
       }
+      posts.shuffle();
       completer.complete(posts);
       setState(() {
         futurePosts = completer.future;

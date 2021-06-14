@@ -147,8 +147,8 @@ class _LoginScreenDesktop extends StatelessWidget {
       child: Card(
         child: Container(
           alignment: Alignment.center,
-          width: size.width * 0.65,
-          height: size.height * 0.75,
+            width: size.width * 0.65,
+            height: size.height * 0.75,
           child: SingleChildScrollView(
             child: Align(
               alignment: Alignment.center,

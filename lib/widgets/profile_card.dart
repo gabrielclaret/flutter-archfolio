@@ -52,7 +52,7 @@ class ProfileCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      user.name,
+                      isMiniature ? user.username : user.name,
                       style: const TextStyle(
                         color: Palette.profileTheme,
                         fontSize: 20.0,

@@ -24,7 +24,7 @@ class _NavScreenState extends State<NavScreen> {
     Icons.home_outlined,
     Icons.search,
     Icons.add,
-    Icons.notifications_none,
+    //Icons.notifications_none,
     Icons.person_outline,
   ];
 
@@ -33,7 +33,7 @@ class _NavScreenState extends State<NavScreen> {
   @override
   void initState() {
     _screens.add(CreatePostScreen(user: widget.user));
-    _screens.add(NotificationsScreen());
+    //_screens.add(NotificationsScreen());
     _screens.add(ProfileScreen(user: widget.user));
     super.initState();
   }
